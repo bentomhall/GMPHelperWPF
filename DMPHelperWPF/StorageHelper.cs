@@ -5,13 +5,19 @@ using LibGenerator.Dungeon;
 using LibGenerator.NPC;
 using LibGenerator.Settlement;
 using Newtonsoft.Json;
+using System.IO;
 
 namespace DMPHelperWPF
 {
     public class StorageHelper
     {
+        private string packURI = @"pack://application:,,,/Data";
+        private string localPath;
+
         public StorageHelper()
         {
+            localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DMPHelper");
+            Directory.CreateDirectory(localPath);
             foreach (DataFile value in Enum.GetValues(typeof(DataFile)))
             {
                 dataText[value] = GetConfigData(value);
@@ -23,51 +29,29 @@ namespace DMPHelperWPF
             return isDataDirty[page];
         }
 
-        async Task<string> GetConfigData(DataFile fileType)
+        string GetConfigData(DataFile fileType)
         {
-            /*
-            var file = await GetModifiedFile(fileType);
-            string text;
-            if (file == null)
-            {
-                var defaultFile = await GetDefaultFile(fileType);
-                text = await FileIO.ReadTextAsync(defaultFile);
-                file = await ApplicationData.Current.LocalFolder.CreateFileAsync(dataFiles[fileType]);
-                await FileIO.WriteTextAsync(file, text);
-            }
-            else
-            {
-                text = await FileIO.ReadTextAsync(file);
-            }
-            localFiles[fileType] = file;*/
-            return "";
-        }
-
-        async Task<StorageFile> GetModifiedFile(DataFile fileType)
-        {
-            if (localFiles.TryGetValue(fileType, out StorageFile savedFile))
-            {
-                return savedFile;
-            }
-            var folder = ApplicationData.Current.LocalFolder;
+            string data;
             var filename = dataFiles[fileType];
-            StorageFile file = await folder.TryGetItemAsync(filename) as StorageFile;
-            return file;
-
-        }
-
-        async Task<StorageFile> GetDefaultFile(DataFile fileType)
-        {
-            var filename = new Uri(@"ms-appx:////Assets/" + dataFiles[fileType]);
-            return await StorageFile.GetFileFromApplicationUriAsync(filename);
+            var localFile = Path.Combine(localPath, filename);
+            try
+            {
+                data = File.ReadAllText(localFile);
+            } catch (IOException)
+            {
+                string defaultPath = Path.Combine(packURI, filename);
+                File.Copy(defaultPath, localFile);
+                data = File.ReadAllText(localFile);
+            }
+            return data;
         }
 
         public NPCGenerator GetNPCGenerator()
         {
             if (nPCGenerator == null || isDataDirty["npc"]) {
-                var culture = DeserializeAsync<CultureData>(DataFile.Race);
-                var names = DeserializeAsync<NameData>(DataFile.NpcName);
-                var personalities = DeserializeAsync<string>(DataFile.Personality);
+                var culture = Deserialize<CultureData>(DataFile.Race);
+                var names = Deserialize<NameData>(DataFile.NpcName);
+                var personalities = Deserialize<string>(DataFile.Personality);
                 var professions = Deserialize<string>(DataFile.Profession);
                 var nations = Deserialize<NationData>(DataFile.Nation);
                 nPCGenerator = new NPCGenerator(culture, names, personalities, professions, nations);
@@ -106,7 +90,7 @@ namespace DMPHelperWPF
 
         public string GetConfigText(DataFile type)
         {
-            return dataText[type].Result;
+            return dataText[type];
         }
 
         public string GetBlankEntry<T>() where T : new()
@@ -115,22 +99,19 @@ namespace DMPHelperWPF
             return "," + Environment.NewLine + JsonConvert.SerializeObject(entry, Formatting.Indented);
         }
 
-        public async Task SaveConfigText(DataFile type, string text)
+        public void SaveConfigText(DataFile type, string text)
         {
-            var file = localFiles[type];
-            dataText[type] = Task.FromResult(text);
+            var file = Path.Combine(localPath, dataFiles[type]);
+            dataText[type] = text;
             MarkDirty(type);
-            await FileIO.WriteTextAsync(file, text, Windows.Storage.Streams.UnicodeEncoding.Utf8);
+            File.WriteAllText(file, text, System.Text.Encoding.UTF8);
             return;
         }
 
-        public async Task SaveConfigText(DataFile type, object data)
+        public void SaveConfigText(DataFile type, object data)
         {
-            var file = localFiles[type];
             var text = JsonConvert.SerializeObject(data, Formatting.Indented);
-            dataText[type] = Task.FromResult(text);
-            MarkDirty(type);
-            await FileIO.WriteTextAsync(file, text, Windows.Storage.Streams.UnicodeEncoding.Utf8);
+            SaveConfigText(type, text);
         }
 
         private void MarkDirty(DataFile type)
@@ -164,36 +145,40 @@ namespace DMPHelperWPF
         private DungeonGenerator dGenerator;
         private Dictionary<string, bool> isDataDirty = new Dictionary<string, bool> { {"npc", false }, {"dungeon", false }, {"settlement", false } };
 
+        /*
         public async Task<List<T>> DeserializeAsync<T>(DataFile type)
         {
             var data = dataText[type];
             return await data.ContinueWith(x => JsonConvert.DeserializeObject<List<T>>(x.Result));
-        }
+        }*/
 
         public List<T> Deserialize<T>(DataFile type)
         {
             var data = dataText[type];
-            if (!data.IsCompletedSuccessfully)
-            {
-                data.Wait(-1); //will block thread.
-            }
-            return JsonConvert.DeserializeObject<List<T>>(data.Result);
+            return JsonConvert.DeserializeObject<List<T>>(data);
         }
 
-        private async Task<StorageFile> ChooseThemePackage()
+        private string ChooseThemePackage()
         {
-            var picker = new Windows.Storage.Pickers.FileOpenPicker
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog
             {
-                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary,
+                FileName = "theme",
+                DefaultExt = ".zip",
+                Filter = "Compressed Theme Files (.zip)|*.zip"
             };
-            picker.FileTypeFilter.Add(".zip");
-            picker.FileTypeFilter.Add(".rpgsetting");
 
-            return await picker.PickSingleFileAsync();
-            
+            bool? result = dlg.ShowDialog();
+            if (result == true)
+            {
+                return dlg.FileName;
+            }
+            else
+            {
+                return null;
+            }
         }
 
-        private async Task<StorageFile> ChooseFileLocation(Export.ExportTypes type)
+        private string ChooseFileLocation(Export.ExportTypes type)
         {
             string filename;
             switch (type)
@@ -212,56 +197,68 @@ namespace DMPHelperWPF
                     break;
             }
 
-            var picker = new Windows.Storage.Pickers.FileSavePicker
+            var dlg = new Microsoft.Win32.SaveFileDialog
             {
-                SuggestedStartLocation = Windows.Storage.Pickers.PickerLocationId.DocumentsLibrary,
-                SuggestedFileName = filename
+                FileName = filename,
+                DefaultExt = ".txt",
+                Filter = "Text documents (.txt)|*.txt"
             };
-            picker.FileTypeChoices.Add("Plain Text", new List<string>() { ".txt" });
-            var file = await picker.PickSaveFileAsync();
-            return file;
+
+            bool? result = dlg.ShowDialog();
+            if (result == true)
+            {
+                return dlg.FileName;
+            }
+            else
+            {
+                return null;
+            }
+
         }
 
         public async Task WriteFile<T>(Export.ExportTypes export, IEnumerable<T> data)
         {
-            var file = await ChooseFileLocation(export);
+            var file = ChooseFileLocation(export);
+            if (file == null)
+            {
+                return;
+            }
             var writer = new Export.ExportWriter(file);
             switch (export)
             {
                 case Export.ExportTypes.Dungeon:
-                    await WriteDungeon(writer, data as IEnumerable<AdventureData>);
+                    WriteDungeon(writer, data as IEnumerable<AdventureData>);
                     break;
                 case Export.ExportTypes.Person:
-                    await WriteNPC(writer, data as IEnumerable<PersonData>);
+                    WriteNPC(writer, data as IEnumerable<PersonData>);
                     break;
                 case Export.ExportTypes.Settlement:
-                    await WriteSettlement(writer, data as IEnumerable<Settlement>);
+                    WriteSettlement(writer, data as IEnumerable<Settlement>);
                     break;
             }
             return;
 
         }
 
-        private async Task WriteNPC(Export.ExportWriter e, IEnumerable<PersonData> data)
+        private void WriteNPC(Export.ExportWriter e, IEnumerable<PersonData> data)
         {
             var exporter = new Export.PersonExporter();
-            await e.WriteFile(exporter, data);
+            e.WriteFile(exporter, data);
         }
 
-        private async Task WriteSettlement(Export.ExportWriter e, IEnumerable<Settlement> data)
+        private void WriteSettlement(Export.ExportWriter e, IEnumerable<Settlement> data)
         {
             var exporter = new Export.SettlementExporter();
-            await e.WriteFile(exporter, data);
+            e.WriteFile(exporter, data);
         }
 
-        private async Task WriteDungeon(Export.ExportWriter e, IEnumerable<AdventureData> data)
+        private void WriteDungeon(Export.ExportWriter e, IEnumerable<AdventureData> data)
         {
             var exporter = new Export.DungeonExporter();
-            await e.WriteFile(exporter, data);
+            e.WriteFile(exporter, data);
         }
 
-        Dictionary<DataFile, StorageFile> localFiles = new Dictionary<DataFile, StorageFile>();
-        Dictionary<DataFile, Task<string>> dataText = new Dictionary<DataFile, Task<string>>();
+        Dictionary<DataFile, string> dataText = new Dictionary<DataFile, string>();
         Dictionary<DataFile, string> dataFiles = new Dictionary<DataFile, string>
         {
             {DataFile.City, "cityData.json" },

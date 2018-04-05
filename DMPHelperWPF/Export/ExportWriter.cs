@@ -13,17 +13,17 @@ namespace DMPHelperWPF.Export
 
     public class ExportWriter
     {
-        private IStorageFile file;
+        private string file;
 
-        public ExportWriter(IStorageFile storageFile)
+        public ExportWriter(string storageFile)
         {
             file = storageFile;
         }
 
-        public async Task WriteFile<T>(IExporter<T> exporter, IEnumerable<T> data)
+        public void WriteFile<T>(IExporter<T> exporter, IEnumerable<T> data)
         {
             var contents = exporter.Marshal(data);
-            await FileIO.WriteTextAsync(file, contents);
+            System.IO.File.WriteAllText(file, contents);
         }
     }
 }
