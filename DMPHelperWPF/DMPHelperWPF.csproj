@@ -54,6 +54,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Export\Exporters.cs" />
+    <Compile Include="Export\ExportWriter.cs" />
+    <Compile Include="StorageHelper.cs" />
+    <Compile Include="ViewModels\ConfigBaseViewModel.cs" />
+    <Compile Include="ViewModels\ConfigEditorViewModel.cs" />
+    <Compile Include="ViewModels\ConfigItemViewModel.cs" />
+    <Compile Include="ViewModels\DungeonGeneratorViewModel.cs" />
+    <Compile Include="ViewModels\DungeonViewModel.cs" />
+    <Compile Include="ViewModels\NotifyChangedBase.cs" />
+    <Compile Include="ViewModels\NPCGeneratorViewModel.cs" />
+    <Compile Include="ViewModels\PersonViewModel.cs" />
+    <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\SettlementGeneratorViewModel.cs" />
+    <Compile Include="ViewModels\SettlementViewModel.cs" />
+    <Compile Include="ViewModels\SimpleListDataModel.cs" />
+    <Compile Include="Views\ConfigEditorPage.xaml.cs">
+      <DependentUpon>ConfigEditorPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConfigItemPage.xaml.cs">
+      <DependentUpon>ConfigItemPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DungeonPage.xaml.cs">
+      <DependentUpon>DungeonPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NpcPage.xaml.cs">
+      <DependentUpon>NpcPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettlementPage.xaml.cs">
+      <DependentUpon>SettlementPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -66,6 +99,34 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\ConfigEditorPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ConfigItemPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DungeonPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\NpcPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PrimaryTheme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SettlementPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\WelcomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -81,10 +142,123 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Resource Include="Assets\LargeTile.scale-100.png" />
+    <Resource Include="Assets\LargeTile.scale-125.png" />
+    <Resource Include="Assets\LargeTile.scale-150.png" />
+    <Resource Include="Assets\LargeTile.scale-200.png" />
+    <Resource Include="Assets\LargeTile.scale-400.png" />
+    <Resource Include="Assets\LockScreenLogo.scale-200.png" />
+    <Resource Include="Assets\SmallTile.scale-100.png" />
+    <Resource Include="Assets\SmallTile.scale-125.png" />
+    <Resource Include="Assets\SmallTile.scale-150.png" />
+    <Resource Include="Assets\SmallTile.scale-200.png" />
+    <Resource Include="Assets\SmallTile.scale-400.png" />
+    <Resource Include="Assets\SplashScreen.scale-100.png" />
+    <Resource Include="Assets\SplashScreen.scale-125.png" />
+    <Resource Include="Assets\SplashScreen.scale-150.png" />
+    <Resource Include="Assets\SplashScreen.scale-200.png" />
+    <Resource Include="Assets\SplashScreen.scale-400.png" />
+    <Resource Include="Assets\Square150x150Logo.scale-100.png" />
+    <Resource Include="Assets\Square150x150Logo.scale-125.png" />
+    <Resource Include="Assets\Square150x150Logo.scale-150.png" />
+    <Resource Include="Assets\Square150x150Logo.scale-200.png" />
+    <Resource Include="Assets\Square150x150Logo.scale-400.png" />
+    <Resource Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
+    <Resource Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Resource Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
+    <Resource Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
+    <Resource Include="Assets\Square44x44Logo.scale-100.png" />
+    <Resource Include="Assets\Square44x44Logo.scale-125.png" />
+    <Resource Include="Assets\Square44x44Logo.scale-150.png" />
+    <Resource Include="Assets\Square44x44Logo.scale-200.png" />
+    <Resource Include="Assets\Square44x44Logo.scale-400.png" />
+    <Resource Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Resource Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Resource Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Resource Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Resource Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Resource Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Resource Include="Assets\StoreLogo.scale-100.png" />
+    <Resource Include="Assets\StoreLogo.scale-125.png" />
+    <Resource Include="Assets\StoreLogo.scale-150.png" />
+    <Resource Include="Assets\StoreLogo.scale-200.png" />
+    <Resource Include="Assets\StoreLogo.scale-400.png" />
+    <Resource Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Resource Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Resource Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Resource Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Resource Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="HelpText\CityDataHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\CultureDataHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\DungeonDataHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\ItemRanksHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\NameHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\NationDataHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\PersonalityAndProfession.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\RegionDataHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\SettlementRoleHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\SettlementTypesHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="HelpText\WelcomeText.html" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <Content Include="Data\cityData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\dungeonData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\itemRanks.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\nations.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcNames.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\personality.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\professions.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\races.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\regionData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\rumors.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\settlementRoles.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\settlementTypes.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -92,6 +266,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\DMPrepHelper\libGenerator\libGenerator.csproj">
+      <Project>{e689f57e-3a18-4c15-bfd9-91ce4e9d57be}</Project>
+      <Name>libGenerator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>11.0.2</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

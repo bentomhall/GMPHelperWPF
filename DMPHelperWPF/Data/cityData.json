@@ -1,0 +1,68 @@
+[
+  {
+    "Name": "Watertown",
+    "Nation": "Independent",
+    "Population": 100000,
+    "Size": "City",
+    "Region": "Forgotten Coast",
+    "Terrain": "Sea Coast",
+    "Races": {
+      "human": 0.65,
+      "dwarf": 0.1,
+      "elf": 0.1,
+      "halfling": 0.05,
+      "half elf": 0.05,
+      "gnome": 0.03,
+      "half orc": 0.02
+    },
+    "Tech": 4,
+    "Prefixes": [ "aber", "craig", "mont", "" ],
+    "Infixes": [ "river", "ford", "brad", "carden", "white", "shep", "inver", "nath", "" ],
+    "Suffixes": [ "avon", "axe", "ay", "y", "beck", "dale", "holm", "lyn" ],
+    "Combiner": ""
+  },
+  {
+    "Name": "River Gate",
+    "Nation": "Independent",
+    "Size": "City",
+    "Region": "Forgotten Coast",
+    "Terrain": "Sea Coast",
+    "Population": 140000,
+    "Races": {
+      "human": 0.61,
+      "dwarf": 0.11,
+      "elf": 0.08,
+      "halfling": 0.07,
+      "half elf": 0.06,
+      "gnome": 0.04,
+      "half orc": 0.04
+    },
+    "Tech": 4,
+    "Prefixes": [ "aber", "craig", "mont", "" ],
+    "Infixes": [ "river", "ford", "brad", "carden", "white", "shep", "inver", "nath", "" ],
+    "Suffixes": [ "avon", "axe", "ay", "y", "beck", "dale", "holm", "lyn" ],
+    "Combiner": ""
+  },
+  {
+    "Name": "Snowharbor",
+    "Nation": "Independent",
+    "Population": 23192,
+    "Size": "City",
+    "Region": "Forgotten Coast North",
+    "Terrain": "Sea Coast",
+    "Races": {
+      "human": 0.58,
+      "dwarf": 0.12,
+      "elf": 0.09,
+      "halfling": 0.07,
+      "half elf": 0.06,
+      "gnome": 0.04,
+      "half orc": 0.04
+    },
+    "Tech": 4,
+    "Prefixes": [ "aber", "craig", "mont", "" ],
+    "Infixes": [ "river", "ford", "brad", "carden", "white", "shep", "inver", "nath", "" ],
+    "Suffixes": [ "avon", "axe", "ay", "y", "beck", "dale", "holm", "lyn" ],
+    "Combiner": ""
+  }
+]

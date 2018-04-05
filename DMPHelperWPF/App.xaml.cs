@@ -13,5 +13,14 @@ namespace DMPHelperWPF
     /// </summary>
     public partial class App : Application
     {
+        public App()
+        {
+            this.InitializeComponent();
+            Storage = new StorageHelper();
+        }
+
+        public StorageHelper Storage { get; private set; }
+
+ 
     }
 }

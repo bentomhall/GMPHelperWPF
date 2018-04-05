@@ -1,0 +1,163 @@
+[
+    {
+        "Name": "wilderness",
+        "Scale": "large",
+        "Sizes": [3,4,5],
+        "Subtypes": [
+            "hostile",
+            "enchanted",
+            "fey",
+            "barren",
+            "mountains",
+            "planar",
+            "corrupted",
+            "arctic",
+            "forest",
+          "water",
+          "desert",
+          "plains",
+          "hills",
+          "swamp"
+        ],
+        "Ages": ["old", "recent"],
+        "HasBoss": 0.0,
+        "LairChance": {
+            "1": 0.1,
+            "2": 0.5,
+            "3": 0.6
+        },
+        "HasSublocations": true
+    },
+    {
+        "Name": "ruin",
+        "Scale": "small",
+        "Sizes": [1, 2, 3],
+        "Subtypes": [
+            "tower",
+            "fortress",
+            "overgrown",
+            "shrine",
+            "estate",
+            "arcane",
+          "vault",
+          "farmstead",
+          "vehicle"
+        ],
+        "Ages": ["ancient", "old", "recent"],
+        "HasBoss": 0.2,
+        "LairChance": {
+            "1": 0,
+            "2": 0,
+            "3": 0
+        },
+        "HasSublocations":false
+    },
+    {
+        "Name": "urban ruin",
+        "Scale": "large",
+        "Sizes": [1, 2],
+        "Subtypes": [
+            "agricultural",
+            "industrial",
+            "religious",
+            "military",
+          "arcane",
+          "outcast"
+        ],
+        "Ages": ["ancient", "old"],
+        "HasBoss": 0.5,
+        "LairChance": {
+            "1": 0.2,
+            "2": 0.6,
+            "3": 1
+        },
+        "HasSublocations": true
+    },
+    {
+        "Name": "graveyard",
+        "Scale": "small",
+        "Sizes": [1, 2],
+        "Subtypes": [
+            "battlefield",
+            "mass grave",
+            "fancy",
+          "catacomb",
+          "simple",
+          "overgrown"
+        ],
+        "Ages": ["ancient", "old", "recent"],
+        "HasBoss": 0.3,
+        "LairChance": {
+            "1": 0,
+            "2": 0,
+            "3": 0.3
+        },
+        "HasSublocations":false
+    },
+    {
+        "Name": "camp",
+        "Scale": "small",
+        "Sizes": [1, 2],
+        "Subtypes": [
+            "bandit",
+            "tribal",
+            "permanent",
+          "traveller",
+          "military",
+          "merchant",
+          "noble",
+          "outcast"
+        ],
+        "Ages": ["recent"],
+        "HasBoss": 0.9,
+        "LairChance": {
+            "1": 0,
+            "2": 0,
+            "3": 0
+        },
+        "HasSublocations": false
+    },
+    {
+        "Name": "underground",
+        "Scale": "medium",
+        "Sizes": [1, 2, 3, 4, 5],
+        "Subtypes": [
+            "crypt",
+            "vault",
+            "cave",
+            "hideout",
+          "shrine",
+          "volcanic"
+        ],
+        "Ages": ["ancient", "old", "recent"],
+        "HasBoss": 0.7,
+        "LairChance": {
+            "1": 0.1,
+            "2": 0.5,
+            "3": 0.8
+        },
+        "HasSublocations": true
+    },
+    {
+        "Name": "lair",
+        "Scale": "small",
+        "Sizes": [1, 2],
+        "Subtypes": [
+            "dragon",
+            "beast",
+            "fiend",
+          "undead",
+          "giant",
+          "aberration",
+          "humanoid"
+        ],
+        "Ages": ["ancient", "old", "recent"],
+        "HasBoss": 1,
+        "LairChance": {
+            "1": 0,
+            "2": 0,
+            "3": 0
+        },
+        "HasSublocations":false
+    }
+]

@@ -1,0 +1,65 @@
+[
+{   "Culture": "Southerner",
+    "Male": ["Aseir", "Bardeid", "Haseid", "Khemed", "Mehmen", "Sudeiman", "Zasheir"],
+    "Female": ["Atala", "Ceidil", "Hama", "Jasmal", "Meilil", "Seipora", "Yasheira", "Zasheida"],
+    "Combiner": " ",
+    "Family": ["Basha", "Dumein", "Jassan", "Khalid", "Mostana", "Pashar", "Rein"],
+    "Base": ""
+},
+    {
+        "Culture": "Middle-lander",
+        "Male": ["Darvin", "Dorn", "Evendur", "Gorstag", "Grim", "Helm", "Malark", "Morn", "Randal", "Stedd"],
+        "Female": ["Arveene", "Esvele", "Jhessail", "Kerri", "Lureene", "Miri", "Rowan", "Shandri", "Tessele"],
+        "Combiner": " ",
+        "Family": ["Ablecrown", "Buckman", "Dundragon", "Evenwood", "Greycastle", "Tallstag"],
+        "Base": ""
+    },
+    {
+        "Culture": "Northerner",
+        "Male": ["Bor", "Fodel", "Glar", "Grigor", "Igan", "Ivor", "Kosef", "Mival", "Orel", "Pavel", "Sergor"],
+        "Female": ["Alethra", "Kara", "Katernin", "Mara", "Natali", "Olma", "Tana", "Zora"],
+        "Combiner": " ",
+        "Family": ["Beresk", "Chernin", "Dotsk", "Kulenov", "Marsk", "Nemetsk", "Shemov", "Starag"],
+        "Base": ""
+    },
+    {
+        "Culture": "dwarf",
+        "Male": ["Adrik", "Alberich", "Baern", "Barendd","Brottor","Bruenor","Dain","Darrak","Delg","Eberk","Einkil","Fargrim","Flint","Gardain","Harbek","Kildrak","Morgran","Orsik","Oskar","Rangrim","Rurik","Taklinn","Thoradin","Thorin","Tordek","Traubon","Travok","Ulfgar","Veit","Vondal"],
+        "Female":["Amber","Artin","Audhild","Bardryn","Dagnal","Diesa","Eldeth","Falkrunn","Finellen","Gunnloda","Gurdis","Helja","Hlin","Kathra","Kristryd","Ilde","Liftrasa","Mardred","Riswynn","Sannl","Torbera","Torgga", "Vistra"],
+        "Combiner": " ",
+        "Family":["Balderk","Battlehammer","Brawnanvil","Dankil","Fireforge","Frostbeard","Gorunn","Hoderhek","Ironfist","Loderr","Lutgehr","Rumnaheim","Strakeln","Torunn","Ungart"],
+        "Base": ""
+    },
+    {
+        "Culture": "elf",
+        "Male":["Adran","Aelar","Aramil","Arannis","Aust","Beiro","Berrian","Carric","Enialis","Erdan","Erevan","Galinndan","Hadarai","Heian","Himo","Immeral","Ivellios","Laucian","Mindartis","Paelias","Peren","Quarion","Riardon","Rolen","Soveliss","Thamior","Tharivol","Theren","Varis"],
+        "Female":["Adrie","Althaea","Anastrianna","Drusilia","Enna","Felosial","Ielenia","Jelenneth","Keyleth","Leshanna","Lia","Meriele","Mialee","Naivara","Quelanna","Quillathe","Sariel","Shanairra","Shava","Silaqui","Theirastra","Thia","Vadania","Valanthe","Xanaphia"],
+        "Combiner": " ",
+        "Family":["Amakiir","Amastacia","Galanodel","Holimion","Ilphelkiir","Liandon","Meliamne","Nailo","Siannodel","Xiloscient"],
+        "Base": ""
+    },
+    {
+        "Culture": "halfling",
+        "Male": ["Alton","Ander","Cade","Corrin","Eldon","Errich","Finnan","Garret","Lindal","Lyle","Merric","Milo","Osborn","Perrin","Reed","Roscoe","Wellby"],
+        "Female":["Andry","Bree","Callie","Cora","Euphemia","Jilian","Kithri","Lavinia","Lidda","Merla","Nedda","Paela","Portia","Seraphina","Shaena","Trym","Vani","Verna"],
+        "Combiner": " ",
+        "Family": ["Brushgather","Goodbarrel","Greenbottle", "High-hill","Hilltopple","Leagallow","Tealeaf","Thorngage","Tosscobble","Underbough"],
+        "Base": ""
+    },
+    {
+        "Culture": "gnome",
+        "Male":["Alston","Alvyn","Boddynock","Brocc","Burgell","Dimble","Eldon","Erky","Fonkin","Frug","Gerbo","Gimble","Glim","Jebeddo","Kellen","Namfoodle","Orryn","Roondar","Seebo","Sindri","Warryn","Wrenn","Zook"],
+        "Female":["Bimpnottin","Breena","Caramip","Carlin","Donella","Duvamil","Ella","Ellyjobell","Ellywick","Lilli","Loopmottin","Lorilla","Mardnab","Nissa","Nyx","Oda","Orla","Roywyn","Shamil","Tana","Waywocket","Zanna"],
+        "Combiner": " ",
+        "Family":["Beren","Daergel","Folkor","Garrick","Nackle","Murnig","Nigel","Raulnor","Scheppen","Timbers","Turen"],
+        "Base": ""
+    },
+    {
+        "Culture": "half orc",
+        "Male":["Dench","Feng","Gell","Henk","Holg","Imsh","Keth","Krusk","Mhurren","Ront","Shump","Thokk"],
+        "Female":["Baggi","Emen","Engong","Kansif","Myev","Neega","Ovak","Ownka","Shautha","Sutha","Vola","Volen","Yevelda"],
+        "Combiner": "",
+        "Family": [],
+        "Base": ""
+    }
+]

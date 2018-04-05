@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Regions</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        table {
+            max-width: 40%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 4px;
+        }
+
+        thead td {
+            font-weight: bold;
+            text-align: center;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>regionData.json Format</h1>
+    <p>This config file contains information about the large geographical regions of the setting. This is particularly used to generate adventure sites.</p>
+
+    <h2>Element Format and necessary keys</h2>
+    This file (like all the rest), is a list of mappings. The keys must be spelled exactly as written (including capitalization), but the order doesn't matter.
+    <table>
+        <thead>
+            <tr>
+                <td>Key</td>
+                <td>Data Type</td>
+                <td>Comments</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Name</td>
+                <td><em>string</em></td>
+                <td>A unique identifier used to connect to other files.</td>
+            </tr>
+            <tr>
+                <td>Tier</td>
+                <td><em>list(decimal)</em></td>
+                <td>
+                    Tiers of play. Use the following conventions: <br />
+                    1 = levels 1-4 <br />
+                    1.5 = levels 3-6 <br />
+                    2 = levels 5-10 <br />
+                    2.5 = levels 8-13 <br />
+                    3 = levels 11-16 <br />
+                    3.5 = levels 15-18 <br />
+                    4 = levels 17-20
+                </td>
+            </tr>
+            <tr>
+                <td>Monsters</td>
+                <td>{<em>string</em> : <em>decimal</em>}</td>
+                <td>The types and abundances of different monster groups in this region. You can be as detailed as you want; I prefer to be more general ("beast", "undead", etc).</td>
+            </tr>
+            <tr>
+                <td>AdventuresPerHex</td>
+                <td><em>decimal</em></td>
+                <td>Currently unused.</td>
+            </tr>
+            <tr>
+                <td>AdventureTypes</td>
+                <td><em>list(string)</em></td>
+                <td>The possible adventure sites found in this region. These must match those defined in the Dungeon config file.</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>JSON format</h2>
+    <p>Data types are set out in italics like <em>string</em>. The relevant data types are:</p>
+    <table>
+        <thead>
+            <tr>
+                <td>Data Type</td>
+                <td>Meaning</td>
+                <td>Example</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><em>list(type)</em></td>
+                <td>A comma separated list of that data type. Lists start and end with square brackets.</td>
+                <td>["item 1", "item 2"]; [1, 2, 3, 4]</td>
+            </tr>
+            <tr>
+                <td><em>string</em></td>
+                <td>A double-quoted piece of information that can contain any UTF-8 character.</td>
+                <td>"a value"</td>
+            </tr>
+            <tr>
+                <td><em>int</em></td>
+                <td>A whole number, written without quotes. If the range is limited, it's noted as start &le; int &le; stop (including both endpoints)</td>
+                <td>42</td>
+            </tr>
+            <tr>
+                <td><em>decimal</em></td>
+                <td>A number with a decimal point. In this app, that will always be in the range 0.0 &le; x &le; 1.0 and will mean a probability of occurance.</td>
+                <td>0.5</td>
+            </tr>
+            <tr>
+                <td>{<em>string</em> : <em>type</em>}</td>
+                <td>A mapping between a string (the key) and a value of <em>type</em>. Written as a comma-separated list of "key":value, enclosed in curly braces. The colon is important.</td>
+                <td>{"This": 1, "That": 2}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

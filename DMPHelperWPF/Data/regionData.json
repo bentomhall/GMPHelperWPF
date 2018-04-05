@@ -1,0 +1,48 @@
+[
+    {
+        "Name": "Sword Coast",
+      "Tier": [ 1, 2, 3, 4 ],
+      "Monsters": {
+        "giant": 0.05,
+        "humanoid": 0.35,
+        "beast": 0.3,
+        "fiend": 0.05,
+        "dragon": 0.05,
+        "undead": 0.2
+      } ,
+        "AdventuresPerHex": 0.5,
+        "AdventureTypes": [
+            "wilderness",
+            "urban ruin",
+            "lair",
+          "underground",
+          "ruin",
+          "graveyard",
+          "camp",
+          "cult"
+        ]
+    },
+    {
+        "Name": "Sword Coast North",
+      "Tier": [ 1, 2, 3, 4 ],
+      "Monsters": {
+        "giant": 0.05,
+        "humanoid": 0.35,
+        "beast": 0.3,
+        "fiend": 0.05,
+        "dragon": 0.05,
+        "undead": 0.2
+      },
+        "AdventuresPerHex": 0.3,
+      "AdventureTypes": [
+        "wilderness",
+        "urban ruin",
+        "lair",
+        "underground",
+        "ruin",
+        "graveyard",
+        "camp",
+        "cult"
+      ]
+    }
+]

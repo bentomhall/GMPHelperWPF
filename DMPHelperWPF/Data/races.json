@@ -1,0 +1,109 @@
+[
+  {
+    "Race": "human",
+    "Nation": "Independent",
+    "Culture": [
+      "Southerner",
+      "Middle-lander",
+      "Northerner"
+    ],
+      "Gender"
+      :
+      {
+        "male": 0.5,
+        "female": 0.5
+      },
+      "Religiosity"
+      :
+      [ "devout", "casual" ],
+      "Subrace":
+      {
+        "N/A": 0.99,
+        "aasimar": 0.01
+      }
+  },
+  {
+    "Race": "halfling",
+    "Nation": "Independent",
+    "Culture": [ "halfling" ],
+    "Gender": {
+      "male": 0.5,
+      "female": 0.5
+    },
+    "Religiosity": [ "devout", "casual" ],
+    "Subrace": {
+      "Stout": 0.5,
+      "Lightfoot": 0.5
+    }
+  },
+  {
+    "Race": "elf",
+    "Nation": "Independent",
+    "Culture": [ "elf" ],
+    "Gender": {
+      "male": 0.5,
+      "female": 0.5
+    },
+    "Religiosity": [ "casual", "devout" ],
+    "Subrace": {
+      "high": 0.4,
+      "wood": 0.59,
+      "drow": 0.01
+    }
+  },
+  {
+    "Race": "half elf",
+    "Nation": "Independent",
+    "Culture": [
+      "Southerner",
+      "Middle-lander",
+      "Northerner",
+      "elf"
+    ],
+    "Gender": {
+      "male": 0.5,
+      "female": 0.5
+    },
+    "Religiosity": [ "devout", "casual" ],
+    "Subrace": {}
+  },
+  {
+    "Race": "half orc",
+    "Nation": "Independent",
+    "Culture": [ "half orc" ],
+    "Gender": {
+      "male": 0.5,
+      "female": 0.5
+    },
+    "Religiosity": [ "casual", "devout" ],
+    "Subrace": {}
+  },
+  {
+    "Race": "gnome",
+    "Nation": "Independent",
+    "Culture": ["gnome"],
+    "Gender": {
+      "male": 0.5,
+      "female": 0.5
+    },
+    "Religiosity": [ "casual", "devout" ],
+    "Subrace": {
+      "rock": 0.5,
+      "forest":  0.5
+    }
+  },
+  {
+    "Race": "dwarf",
+    "Nation": "Independent",
+    "Culture": [ "dwarf" ],
+    "Gender": {
+      "male": 0.5,
+      "female": 0.5
+    },
+    "Religiosity": [ "devout", "casual" ],
+    "Subrace": {
+      "hill": 0.5,
+      "mountain": 0.5
+    }
+  }
+]

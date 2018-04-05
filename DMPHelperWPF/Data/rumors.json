@@ -1,0 +1,67 @@
+﻿{
+  "Categories":  ["Local", "Mystical", "Political", "Invaders", "Discoveries", "Extinction", "Organization"],
+  "Rumors": [
+    {
+      "Category": "Local",
+      "What": "Farmer <NPC>'s cow is sick and <Gender> suspects a curse.",
+      "Random": [],
+      "Reward": "",
+      "Generated": ["NPC"]
+
+    },
+    {
+      "Category": "Local",
+      "What": "The settlement's crops are struggling because of the <RND>.",
+      "Random": [ "heavy rain", "unseasonable hot weather", "leaf blight", "abundance of insects" ],
+      "Reward": "",
+      "Generated": [ ]
+    },
+    {
+      "Category": "Mystical",
+      "What": "A new star appeared and villagers are whispering that it's an omen of <RND>.",
+      "Random": [ "plague", "a new demigod", "a battle between demons and angels", "divine judgement", "famine", "good times ahead", "planar misalignment" ],
+      "Reward": "",
+      "Generated": [ ]
+    },
+    {
+      "Category": "Mystical",
+      "What": "Strange events followed a stranger into town; sounds of music, great and terrible luck, rains of frogs. He left going <RND> about 2 days ago.",
+      "Random": [ "north", "north-east", "east", "south-east", "south", "south-west", "west", "north-west" ],
+      "Reward": "",
+      "Generated": [ ]
+    },
+    {
+      "Category": "Local",
+      "What": "<NPC> is offering a reward for clearing <RND> out of his property.",
+      "Random": [ "giant rats", "giant wasps", "giant badgers", "feral cats", "fey spirits" ],
+      "Reward": "small",
+      "Generated": [ "NPC" ]
+    },
+    {
+      "Category": "Political",
+      "Random": [],
+      "What": "The local landowner, <NPC>, is hiring adventurers for an escort.",
+      "Reward": "medium",
+      "Generated": [ "NPC" ]
+    },
+    {
+      "Category": "Local",
+      "Random": [],
+      "What": "A local, <NPC>, discovered <Adventure> about two days away from the settlement.",
+      "Reward": "",
+      "Generated": ["NPC", "Adventure"]
+    },
+    {
+      "Category": "",
+      "Who": "",
+      "What": "",
+      "Where": "",
+      "Reward": ""
+    }
+
+
+  ]
+}
+
+
+

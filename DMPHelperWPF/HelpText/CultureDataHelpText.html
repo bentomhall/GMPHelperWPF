@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Culture</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        table {
+            max-width: 40%;
+            table-layout: fixed;
+            border-collapse: collapse;
+        }
+
+        td {
+            padding: 4px;
+        }
+
+        thead td {
+            font-weight: bold;
+            text-align: center;
+            background-color: rgba(0,0,0,0.7);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <h1>races.json Format</h1>
+    <p>This config file contains information about the races and cultures of the setting. Each unique combination of race and nation should be represented; if not, the program will crash when it tries to generate a missing combination.</p>
+
+    <h2>Element Format and necessary keys</h2>
+    This file (like all the rest), is a list of mappings. The keys must be spelled exactly as written (including capitalization), but the order doesn't matter.
+    <table>
+        <thead>
+            <tr>
+                <td>Key</td>
+                <td>Data Type</td>
+                <td>Comments</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Race</td>
+                <td><em>string</em></td>
+                <td>A unique identifier used to connect to other files.</td>
+            </tr>
+            <tr>
+                <td>Nation</td>
+                <td><em>string</em></td>
+                <td>This must match those defined in the Nations config file.</td>
+            </tr>
+            <tr>
+                <td>Culture</td>
+                <td><em>list(string)</em></td>
+                <td>These must be present in the Name config file--one will be selected from this list at random to assign a name.</td>
+            </tr>
+            <tr>
+                <td>Religiosity</td>
+                <td><em>list(string)</em></td>
+                <td>
+                    A list of religious descriptors. I use <em>devout</em> (devoutly worshipping one or more God), <em>casual</em> (propitiates or otherwise casually worships one or more God),
+                    <em>ancestor worship</em> (reveres ancestor spirits), <em>animist</em> (worships elemental or natural spirits), and <em>agnostic</em> (not particularly religious).
+                </td>
+            </tr>
+            <tr>
+                <td>Gender</td>
+                <td>{<em>string</em>:<em>decimal</em>}</td>
+                <td>The gender balance of the race. The only two required keys are Male and Female, and the decimal values can be set to 0 if desired. This sets which pool of names are used for that NPC.</td>
+            </tr>
+            <tr>
+                <td>Subrace</td>
+                <td>{<em>string</em>: <em>decimal</em>}</td>
+                <td>The distribution of notable subraces. Use N/A as a key for the base race if that's an option.</td>
+            </tr>
+        </tbody>
+    </table>
+    <h2>JSON format</h2>
+    <p>Data types are set out in italics like <em>string</em>. The relevant data types are:</p>
+    <table>
+        <thead>
+            <tr>
+                <td>Data Type</td>
+                <td>Meaning</td>
+                <td>Example</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><em>list(type)</em></td>
+                <td>A comma separated list of that data type. Lists start and end with square brackets.</td>
+                <td>["item 1", "item 2"]; [1, 2, 3, 4]</td>
+            </tr>
+            <tr>
+                <td><em>string</em></td>
+                <td>A double-quoted piece of information that can contain any UTF-8 character.</td>
+                <td>"a value"</td>
+            </tr>
+            <tr>
+                <td><em>int</em></td>
+                <td>A whole number, written without quotes. If the range is limited, it's noted as start &le; int &le; stop (including both endpoints)</td>
+                <td>42</td>
+            </tr>
+            <tr>
+                <td><em>decimal</em></td>
+                <td>A number with a decimal point. In this app, that will always be in the range 0.0 &le; x &le; 1.0 and will mean a probability of occurance.</td>
+                <td>0.5</td>
+            </tr>
+            <tr>
+                <td>{<em>string</em> : <em>type</em>}</td>
+                <td>A mapping between a string (the key) and a value of <em>type</em>. Written as a comma-separated list of "key":value, enclosed in curly braces. The colon is important.</td>
+                <td>{"This": 1, "That": 2}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
