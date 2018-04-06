@@ -47,7 +47,7 @@ namespace DMPHelperWPF.ViewModels
             get => $"{settlement.Size} ({settlement.Role}): Population {settlement.Population}";
         }
 
-        public string Name { get => settlement.Name; }
+        public new string Name { get => settlement.Name; }
         public string NearestCity { get => settlement.NearestCity; }
         public ObservableCollection<PersonViewModel> ImportantPeople
         {

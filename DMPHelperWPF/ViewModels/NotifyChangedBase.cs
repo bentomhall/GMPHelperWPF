@@ -12,7 +12,9 @@ namespace DMPHelperWPF.ViewModels
         public event PropertyChangedEventHandler PropertyChanged;
         protected bool IsDirty = false;
         protected string errorText;
+        protected string name;
 
+        public string Name { get => name; }
         public string ErrorText { get => errorText; set => SetProperty(ref errorText, value); }
         public bool DisplayError { get => IsDirty; set => SetProperty(ref IsDirty, value); }
 

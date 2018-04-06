@@ -12,20 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DMPHelperWPF.ViewModels;
 
-namespace DMPHelperWPF
+namespace DMPHelperWPF.Views
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for WelcomePage.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class WelcomePage : Page
     {
-        public MainWindow()
+        public WelcomePage()
         {
             InitializeComponent();
-            var storage = ((App)Application.Current).Storage;
-            DataContext = new WindowViewModel(storage);
         }
     }
 }

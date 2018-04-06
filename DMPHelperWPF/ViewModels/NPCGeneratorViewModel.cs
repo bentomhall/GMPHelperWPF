@@ -50,6 +50,7 @@ namespace DMPHelperWPF.ViewModels
             storageHelper = storage;
             generator = storage.GetNPCGenerator();
             Nations = new ObservableCollection<string>(generator.GetValidNations());
+            name = "NPC Generator";
         }
 
         public bool CanGenerate { get => canGenerate; }
@@ -105,7 +106,7 @@ namespace DMPHelperWPF.ViewModels
         private void ExportSelected()
         {
             var data = SelectedModels.Select(x => x.RawData);
-            var dummy = storageHelper.WriteFile(Export.ExportTypes.Person, data);
+            storageHelper.WriteFile(Export.ExportTypes.Person, data);
         }
     }
 }

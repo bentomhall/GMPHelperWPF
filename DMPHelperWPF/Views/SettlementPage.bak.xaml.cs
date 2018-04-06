@@ -12,19 +12,20 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
-using DMPrepHelper.ViewModels;
-using LibGenerator.Dungeon;
+using LibGenerator.Settlement;
+using DMPHelperWPF.ViewModels;
+using System.Collections.ObjectModel;
 
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace DMPrepHelper.Views
+namespace DMPHelperWPF.Views
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class DungeonPage : Page
+    public sealed partial class SettlementPage : Page
     {
-        public DungeonPage()
+        public SettlementPage()
         {
             this.InitializeComponent();
 
@@ -33,15 +34,15 @@ namespace DMPrepHelper.Views
         protected override void OnNavigatedTo(NavigationEventArgs e)
         {
             var storage = ((App)Application.Current).Storage;
-            if (vm == null || storage.ShouldReload("dungeon"))
+            if (vm == null || storage.ShouldReload("settlement"))
             {
-                vm = new DungeonGeneratorViewModel(storage);
-            }
+                vm = new SettlementGeneratorViewModel(storage);
+            }   
             base.OnNavigatedTo(e);
         }
 
-        private DungeonGeneratorViewModel vm;
-        public DungeonGeneratorViewModel ViewModel { get => vm; }
+        public SettlementGeneratorViewModel ViewModel { get => vm; }
+        private SettlementGeneratorViewModel vm;
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -51,14 +52,14 @@ namespace DMPrepHelper.Views
             {
                 foreach (var r in removed)
                 {
-                    vm.SelectedViewModels.Remove(r as DungeonViewModel);
+                    vm.SelectedViewModels.Remove(r as SettlementViewModel);
                 }
             }
             if (selected.Count != 0)
             {
                 foreach (var a in selected)
                 {
-                    vm.SelectedViewModels.Add(a as DungeonViewModel);
+                    vm.SelectedViewModels.Add(a as SettlementViewModel);
                 }
             }
         }

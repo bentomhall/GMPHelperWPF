@@ -28,7 +28,7 @@ namespace DMPHelperWPF.ViewModels
             OnPropertyChanged(Profession);
         }
 
-        public string Name { get => npc.Name ?? ""; }
+        public new string Name { get => npc.Name ?? ""; }
         
         public string Culture
         {

@@ -11,7 +11,6 @@ namespace DMPHelperWPF
 {
     public class StorageHelper
     {
-        private string packURI = @"pack://application:,,,/Data";
         private string localPath;
 
         public StorageHelper()
@@ -39,9 +38,13 @@ namespace DMPHelperWPF
                 data = File.ReadAllText(localFile);
             } catch (IOException)
             {
-                string defaultPath = Path.Combine(packURI, filename);
-                File.Copy(defaultPath, localFile);
-                data = File.ReadAllText(localFile);
+                var uri = new Uri(Path.Combine("/Data", filename), UriKind.Relative);
+                var info = System.Windows.Application.GetContentStream(uri);
+                using (StreamReader r = new StreamReader(info.Stream, System.Text.Encoding.UTF8))
+                {
+                    data = r.ReadToEnd();
+                }
+                File.WriteAllText(localFile, data);
             }
             return data;
         }
@@ -216,7 +219,7 @@ namespace DMPHelperWPF
 
         }
 
-        public async Task WriteFile<T>(Export.ExportTypes export, IEnumerable<T> data)
+        public void WriteFile<T>(Export.ExportTypes export, IEnumerable<T> data)
         {
             var file = ChooseFileLocation(export);
             if (file == null)

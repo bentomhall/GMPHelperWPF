@@ -27,6 +27,7 @@ namespace DMPHelperWPF.ViewModels
             storage = s;
             generator = s.GetDungeonGenerator();
             Regions = new ObservableCollection<string>(generator.GetValidRegions());
+            name = "Adventure Site Generator";
         }
 
         public ObservableCollection<DungeonViewModel> SelectedViewModels
@@ -104,7 +105,7 @@ namespace DMPHelperWPF.ViewModels
 
         private void ExportSelected()
         {
-            var dummy =  storage.WriteFile(Export.ExportTypes.Dungeon, selectedVMs.Select(x => x.RawData));
+            storage.WriteFile(Export.ExportTypes.Dungeon, selectedVMs.Select(x => x.RawData));
         }
 
     }

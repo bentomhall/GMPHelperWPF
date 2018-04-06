@@ -4,6 +4,19 @@
              xmlns:local="clr-namespace:DMPHelperWPF"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <Style x:Key="NarrowListViewItemStyle" TargetType="ListViewItem">
+            <Setter Property="MinHeight" Value="20"/>
+        </Style>
+        <Style x:Key="InfoFlyoutStyle" TargetType="Popup">
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
+        </Style>
+        <Style x:Key="LabelTextBlock" TargetType="TextBlock">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="TextAlignment" Value="Right"/>
+            <Setter Property="TextWrapping" Value="Wrap"/>
+        </Style>
+        <SolidColorBrush x:Key="ForegroundBrush" Color="#FF000000"/>
+        <SolidColorBrush x:Key="ItemPanelBackgroundBrush" Color="#FF333333"/>
+        <SolidColorBrush x:Key="ItemBackgroundBrush" Color="#FFFFFFFF"/>
     </Application.Resources>
 </Application>

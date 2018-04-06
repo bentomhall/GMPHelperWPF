@@ -69,24 +69,32 @@
     <Compile Include="ViewModels\SettlementGeneratorViewModel.cs" />
     <Compile Include="ViewModels\SettlementViewModel.cs" />
     <Compile Include="ViewModels\SimpleListDataModel.cs" />
-    <Compile Include="Views\ConfigEditorPage.xaml.cs">
-      <DependentUpon>ConfigEditorPage.xaml</DependentUpon>
+    <Compile Include="Views\WelcomeControl.xaml.cs">
+      <DependentUpon>WelcomeControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ConfigItemPage.xaml.cs">
-      <DependentUpon>ConfigItemPage.xaml</DependentUpon>
+    <None Include="Views\ConfigEditorPage.bak.xaml.cs">
+      <DependentUpon>ConfigEditorPage.bak.xaml</DependentUpon>
+    </None>
+    <None Include="Views\ConfigItemPage.bak.xaml.cs">
+      <DependentUpon>ConfigItemPage.bak.xaml</DependentUpon>
+    </None>
+    <None Include="Views\DungeonPage.bak.xaml.cs">
+      <DependentUpon>DungeonPage.bak.xaml</DependentUpon>
+    </None>
+    <None Include="Views\NpcPage.bak.xaml.cs">
+      <DependentUpon>NpcPage.bak.xaml</DependentUpon>
+    </None>
+    <Compile Include="ViewModels\WelcomeViewModel.cs" />
+    <Compile Include="ViewModels\WindowViewModel.cs" />
+    <Compile Include="Views\SettlementControl.xaml.cs">
+      <DependentUpon>SettlementControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\DungeonPage.xaml.cs">
-      <DependentUpon>DungeonPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\NpcPage.xaml.cs">
-      <DependentUpon>NpcPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\SettlementPage.xaml.cs">
-      <DependentUpon>SettlementPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\WelcomePage.xaml.cs">
-      <DependentUpon>WelcomePage.xaml</DependentUpon>
-    </Compile>
+    <None Include="Views\SettlementPage.bak.xaml.cs">
+      <DependentUpon>SettlementPage.bak.xaml</DependentUpon>
+    </None>
+    <None Include="Views\WelcomePage.bak.xaml.cs">
+      <DependentUpon>WelcomePage.bak.xaml</DependentUpon>
+    </None>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -99,33 +107,37 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Views\ConfigEditorPage.xaml">
+    <None Include="Views\ConfigEditorPage.bak.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Views\ConfigItemPage.bak.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Views\DungeonPage.bak.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Views\NpcPage.bak.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </None>
+    <Page Include="Views\SettlementControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ConfigItemPage.xaml">
+    <None Include="Views\SettlementPage.bak.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\DungeonPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    </None>
+    <None Include="Views\WelcomePage.bak.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\NpcPage.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </None>
+    <Page Include="Views\WelcomeControl.xaml">
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\PrimaryTheme.xaml">
       <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\SettlementPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\WelcomePage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>

@@ -38,7 +38,7 @@ namespace DMPHelperWPF.ViewModels
         }
         private void DidSaveConfig()
         {
-            var dummy = storage.SaveConfigText(dataType, items.Select(x => x.Value)); //unwrap the display wrapper.
+            storage.SaveConfigText(dataType, items.Select(x => x.Value)); //unwrap the display wrapper.
         }
 
         private void DidAddItem()

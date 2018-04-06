@@ -28,6 +28,7 @@ namespace DMPHelperWPF.ViewModels
             generator = storage.GetSettlementGenerator();
             Sizes = new ObservableCollection<string>(generator.GetPossibleSettlementTypes());
             Cities = new ObservableCollection<string>(generator.GetPossibleCities());
+            name = "Settlement Generator";
         }
 
         public ObservableCollection<SettlementViewModel> SelectedViewModels
@@ -110,7 +111,7 @@ namespace DMPHelperWPF.ViewModels
         private void ExportSelected()
         {
             var data = selectedViewModels.Select(x => x.RawData);
-            var dummy = storageHelper.WriteFile(Export.ExportTypes.Settlement, data);
+            storageHelper.WriteFile(Export.ExportTypes.Settlement, data);
         }
     }
 }

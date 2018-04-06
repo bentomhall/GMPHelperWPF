@@ -30,7 +30,7 @@ namespace DMPHelperWPF.ViewModels
 
         protected override void DidSaveConfig()
         {
-            var dummy = storage.SaveConfigText(configType, configText);
+            storage.SaveConfigText(configType, configText);
         }
 
         protected override void DidAddItem()
