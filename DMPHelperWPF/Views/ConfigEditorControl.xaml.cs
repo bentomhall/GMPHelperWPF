@@ -33,7 +33,7 @@ namespace DMPHelperWPF.Views
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var text = (e.AddedItems[0] as ConfigItemViewModel).HelpText;
+            var text =@"file://"+(e.AddedItems[0] as ConfigItemViewModel).HelpText;
             HelpTextViewer.Navigate(text);
         }
     }

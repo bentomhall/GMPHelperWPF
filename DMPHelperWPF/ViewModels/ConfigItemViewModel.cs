@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using LibGenerator.Dungeon;
 using LibGenerator.NPC;
@@ -12,12 +13,14 @@ namespace DMPHelperWPF.ViewModels
         private string configText;
         private string helpText;
         private DataFile configType;
+        private string localPath;
 
         public ConfigItemViewModel(StorageHelper s, DataFile type) : base(s)
         {
             configType = type;
             configText = GetData();
-            HelpText = "http://gmphelper.admiralbenbo.org/" + helpResources[configType];
+            localPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "DMPHelper");
+            HelpText = Path.Combine(localPath, helpResources[configType]);
             name = type.ToString();
         }
 

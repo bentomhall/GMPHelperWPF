@@ -28,6 +28,7 @@ namespace DMPHelperWPF
             {
                 dataText[value] = GetConfigData(value);
             }
+            CopyHelpText();
         }
 
         public bool ShouldReload(string page)
@@ -170,7 +171,7 @@ namespace DMPHelperWPF
             }
             catch (IOException)
             {
-                var uri = new Uri(Path.Combine("/Data", filename), UriKind.Relative);
+                var uri = new Uri(Path.Combine(@"\Data", filename), UriKind.Relative);
                 var info = Application.GetContentStream(uri);
                 using (StreamReader r = new StreamReader(info.Stream, System.Text.Encoding.UTF8))
                 {
@@ -181,6 +182,22 @@ namespace DMPHelperWPF
             return data;
         }
 
+        private void CopyHelpText()
+        {
+            var filenames = new List<string> { "CityDataHelpText.html", "CultureDataHelpText.html", "DungeonDataHelpText.html", "ItemRanksHelpText.html",
+                "NameHelpText.html", "NationDataHelpText.html", "PersonalityAndProfession.html", "RegionDataHelpText.html", "SettlementRoleHelpText.html", "SettlementTypesHelpText.html"};
+
+            foreach (var f in filenames)
+            {
+                var path = Path.Combine(localPath, f);
+                var info = new FileInfo(path);
+                var sourceFile = Path.Combine(Environment.CurrentDirectory,"HelpText",f);
+                if (!info.Exists)
+                {
+                    File.Copy(sourceFile, path, true);
+                }
+            }
+        }
 
 
         private void MarkDirty(DataFile type)

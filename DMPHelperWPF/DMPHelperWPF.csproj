@@ -215,34 +215,36 @@
     <Resource Include="Assets\Wide310x150Logo.scale-150.png" />
     <Resource Include="Assets\Wide310x150Logo.scale-200.png" />
     <Resource Include="Assets\Wide310x150Logo.scale-400.png" />
-    <None Include="HelpText\CityDataHelpText.html">
+    <Content Include="HelpText\CityDataHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="HelpText\CultureDataHelpText.html">
+    </Content>
+    <Content Include="HelpText\CultureDataHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="HelpText\DungeonDataHelpText.html">
+    </Content>
+    <Content Include="HelpText\DungeonDataHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="HelpText\ItemRanksHelpText.html">
+    </Content>
+    <Content Include="HelpText\ItemRanksHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="HelpText\NameHelpText.html">
+    </Content>
+    <Content Include="HelpText\NameHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="HelpText\NationDataHelpText.html">
+    </Content>
+    <Content Include="HelpText\NationDataHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="HelpText\PersonalityAndProfession.html">
+    </Content>
+    <Content Include="HelpText\PersonalityAndProfession.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="HelpText\RegionDataHelpText.html">
+    </Content>
+    <Content Include="HelpText\RegionDataHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="HelpText\SettlementRoleHelpText.html">
+    </Content>
+    <Content Include="HelpText\SettlementRoleHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <Content Include="HelpText\SettlementTypesHelpText.html" />
+    </Content>
+    <Content Include="HelpText\SettlementTypesHelpText.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="HelpText\WelcomeText.html" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
