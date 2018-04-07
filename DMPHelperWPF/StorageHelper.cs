@@ -140,21 +140,21 @@ namespace DMPHelperWPF
 
             var file = ChooseThemePackage();
             if (file == null) { return false; }
-            using (FileStream fs = new FileStream(file, FileMode.Open))
+            FileStream fs = new FileStream(file, FileMode.Open);
+            
+            using (ZipArchive archive = new ZipArchive(fs))
             {
-                using (ZipArchive archive = new ZipArchive(fs))
+                var validFiles = new List<string> {"cityData.json", "dungeonData.json", "itemRanks.json", "nations.json", "nations.json", "npcNames.json", "personality.json", "professions.json", "races.json", "regionData.json", "rumors.json", "settlementRoles.json", "settlementTypes.json" };
+                foreach (var item in archive.Entries)
                 {
-                    var validFiles = new List<string> {"cityData.json", "dungeonData.json", "itemRanks.json", "nations.json", "nations.json", "npcNames.json", "personality.json", "professions.json", "races.json", "regionData.json", "rumors.json", "settlementRoles.json", "settlementTypes.json" };
-                    foreach (var item in archive.Entries)
+                    if (validFiles.Contains(item.Name))
                     {
-                        if (validFiles.Contains(item.Name))
-                        {
                             var path = Path.Combine(localPath, item.Name);
                             item.ExtractToFile(path);
-                        }
                     }
                 }
             }
+            
             MarkDirty(DataFile.Nation); //mark both settlements and npcs dirty
             MarkDirty(DataFile.Region); //mark dungeons dirty
             return true;
