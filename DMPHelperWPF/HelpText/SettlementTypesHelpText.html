@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -28,8 +28,8 @@
     </style>
 </head>
 <body>
-    <h1>nations.json Format</h1>
-    <p>This config file contains information about the various roles that a settlement can play and their effects on the tech levels.</p>
+    <h1>settlementTypes.json Format</h1>
+    <p>This config file contains information about the various types of settlements.</p>
 
     <h2>Element Format and necessary keys</h2>
     This file (like all the rest), is a list of mappings. The keys must be spelled exactly as written (including capitalization), but the order doesn't matter.
@@ -48,12 +48,26 @@
                 <td>A unique identifier used to connect to other files.</td>
             </tr>
             <tr>
-                <td>Specialities</td>
-                <td>list of {"Name": <em>string</em>, "Modifier": <em>int</em>}</td>
+                <td>Population</td>
+                <td><em>int</em></td>
                 <td>
-                    The Name values must also be found in the Category property of the Item config file.
-                    The Modifiers are how much the tech level for that category changes. For example, a wizard's complex might have a much higher Arcane tech level than it does a Divine tech level.
+                    
                 </td>
+            </tr>
+            <tr>
+                <td>NPCs</td>
+                <td>list of <em>string</em></td>
+                <td>The job titles of essential npcs.</td>
+            </tr>
+            <tr>
+                <td>TechCaps</td>
+                <td>{<em>string</em>:<em>int</em>}</td>
+                <td>Keys are the categories from Items, values are the maximum tech level for that category.</td>
+            </tr>
+            <tr>
+                <td>Roles</td>
+                <td>{<em>string</em>:<em>decimal</em></td>
+                <td>Roles available (must match Settlement Role keys) and their abundance.</td>
             </tr>
         </tbody>
     </table>

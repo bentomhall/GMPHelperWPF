@@ -1,0 +1,26 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:DMPHelperWPF.Views">
+    <FlowDocument x:Key="WelcomeText">
+        <Paragraph> FontSize="36" FontWeight="Bold">Welcome to Game Master Prep Helper (GMPHelper)!</Paragraph>
+        <Paragraph>>Designed to help overworked GMs and world-builders generate content that matches their setting. This product contains several modules:</Paragraph> 
+            <List>
+                <ListItem>
+                <Paragraph>>It can generate lists of NPCs using customizable lists of names, races, cultures, and personalities.</Paragraph></ListItem>
+                <ListItem>
+                <Paragraph>>It can generate settlements ranging from isolated hermit huts to towns with important NPCs already penciled in, with demographic lists, and with lists of goods and services available based on the technology level of the area.</Paragraph></ListItem>
+                <ListItem>
+                <Paragraph>>It can generate lists of adventure site ideas, including suggested level, major monster type, terrain type, size (both scale and number of mapped areas), and whether there's a boss-type monster present.</Paragraph></ListItem>
+            </List>
+            <Paragraph>All of the data for these generators is freely customizable within the program and (mostly) system independent. The only assumptions that it makes are the existence of tiers of play. The data files come with full documentation.</Paragraph>
+            <Paragraph>Generated items can be exported to structured plain text files for ease of inclusion with other campaign notes.</Paragraph>
+            <Paragraph FontSize="18">Legal and Version Notes</Paragraph>
+            <Paragraph>This is version 0.1 (beta). As a beta product, it still may have bugs. Please let me know about them at gmhelper@admiralbenbo.org</Paragraph>
+            <Paragraph>Suggestions for features, aesthetic changes, or fixes are also welcome. Expect the color schemes to shift around a bit in future versions.</Paragraph>
+        <Paragraph>The code for the app is licensed under the BSD 3-clause license, available at
+            <Hyperlink NavigateUri="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</Hyperlink> and is available at
+            <Hyperlink NavigateUri="https://github.com/bentomhall/DMPrepHelper">https://github.com/bentomhall/DMPrepHelper</Hyperlink> .
+        </Paragraph>
+    </FlowDocument>
+    
+</ResourceDictionary>

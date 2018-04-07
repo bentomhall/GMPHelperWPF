@@ -7,6 +7,8 @@ using LibGenerator.Settlement;
 using Newtonsoft.Json;
 using System.IO;
 using System.IO.Compression;
+using System.Windows.Documents;
+using System.Windows;
 
 namespace DMPHelperWPF
 {
@@ -169,7 +171,7 @@ namespace DMPHelperWPF
             catch (IOException)
             {
                 var uri = new Uri(Path.Combine("/Data", filename), UriKind.Relative);
-                var info = System.Windows.Application.GetContentStream(uri);
+                var info = Application.GetContentStream(uri);
                 using (StreamReader r = new StreamReader(info.Stream, System.Text.Encoding.UTF8))
                 {
                     data = r.ReadToEnd();
@@ -178,6 +180,8 @@ namespace DMPHelperWPF
             }
             return data;
         }
+
+
 
         private void MarkDirty(DataFile type)
         {

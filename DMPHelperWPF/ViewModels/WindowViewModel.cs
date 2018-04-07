@@ -19,6 +19,7 @@ namespace DMPHelperWPF.ViewModels
             viewModels.Add(new NPCGeneratorViewModel(s));
             viewModels.Add(new SettlementGeneratorViewModel(s));
             viewModels.Add(new DungeonGeneratorViewModel(s));
+            viewModels.Add(new ConfigEditorViewModel(s));
             selected = viewModels[0];
         }
 

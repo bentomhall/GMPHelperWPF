@@ -20,6 +20,9 @@
         <DataTemplate DataType="{x:Type local:DungeonGeneratorViewModel}">
             <views:DungeonControl/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type local:ConfigEditorViewModel}">
+            <views:ConfigEditorControl/>
+        </DataTemplate>
     </Window.Resources>
     <DockPanel>
         <Border BorderBrush="Black" BorderThickness="0,0,1,0" DockPanel.Dock="Left" MaxWidth="160">

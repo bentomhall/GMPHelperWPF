@@ -17,7 +17,8 @@ namespace DMPHelperWPF.ViewModels
         {
             configType = type;
             configText = GetData();
-            HelpText = @"ms-appx-web:///Assets/" + helpResources[configType];
+            HelpText = "http://gmphelper.admiralbenbo.org/" + helpResources[configType];
+            name = type.ToString();
         }
 
         public string ConfigText { get => configText; set => SetProperty(ref configText, value); }

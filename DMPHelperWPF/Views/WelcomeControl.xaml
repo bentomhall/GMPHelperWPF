@@ -3,11 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DMPHelperWPF.ViewModels"
+             xmlns:local="clr-namespace:DMPHelperWPF.Views"
+             
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+        <ResourceDictionary x:Key="helpDocs" Source="HelpDocuments.xaml"/>
     </UserControl.Resources>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -22,6 +24,31 @@
             <Button Command="{Binding LoadPackageCommand}" Content="Browse" Margin="12,0,0,0"/>
             <TextBlock Text="{Binding LoadSuccess}" Visibility="{Binding LoadStatus, Converter={StaticResource BoolToVis}}" Margin="12,0,0,0"/>
         </StackPanel>
-        <RichTextBox x:Name="TextViewer" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        <FlowDocumentScrollViewer x:Name="TextViewer" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="9">
+            <FlowDocument>
+                <Paragraph FontSize="18" FontWeight="Bold"> Welcome to Game Master Prep Helper (GMPHelper)!</Paragraph>
+                <Paragraph>Designed to help overworked GMs and world-builders generate content that matches their setting. This product contains several modules:</Paragraph>
+                <List>
+                    <ListItem>
+                        <Paragraph>It can generate lists of NPCs using customizable lists of names, races, cultures, and personalities.</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>It can generate settlements ranging from isolated hermit huts to towns with important NPCs already penciled in, with demographic lists, and with lists of goods and services available based on the technology level of the area.</Paragraph>
+                    </ListItem>
+                    <ListItem>
+                        <Paragraph>It can generate lists of adventure site ideas, including suggested level, major monster type, terrain type, size (both scale and number of mapped areas), and whether there's a boss-type monster present.</Paragraph>
+                    </ListItem>
+                </List>
+                <Paragraph>All of the data for these generators is freely customizable within the program and (mostly) system independent. The only assumptions that it makes are the existence of tiers of play. The data files come with full documentation.</Paragraph>
+                <Paragraph>Generated items can be exported to structured plain text files for ease of inclusion with other campaign notes.</Paragraph>
+                <Paragraph FontSize="18">Legal and Version Notes</Paragraph>
+                <Paragraph>This is version 0.1 (beta). As a beta product, it still may have bugs. Please let me know about them at gmhelper@admiralbenbo.org</Paragraph>
+                <Paragraph>Suggestions for features, aesthetic changes, or fixes are also welcome. Expect the color schemes to shift around a bit in future versions.</Paragraph>
+                <Paragraph>The code for the app is licensed under the BSD 3-clause license, available at
+                    <Hyperlink NavigateUri="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</Hyperlink> and is available at
+                    <Hyperlink NavigateUri="https://github.com/bentomhall/DMPrepHelper">https://github.com/bentomhall/DMPrepHelper</Hyperlink> .
+                </Paragraph>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>
     </Grid>
 </UserControl>

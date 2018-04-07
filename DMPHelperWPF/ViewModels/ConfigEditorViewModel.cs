@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -22,48 +23,29 @@ namespace DMPHelperWPF.ViewModels
             {"Settlement Types", DataFile.SettlementType },
             {"Settlement Roles", DataFile.SettlementRole }
         };
-        private string displayText;
-        private IConfigDisplay displayItem;
+        private ObservableCollection<ConfigItemViewModel> vms = new ObservableCollection<ConfigItemViewModel>();
+        private ConfigItemViewModel vm;
 
         public ConfigEditorViewModel(StorageHelper s)
         {
             storage = s;
-            Labels = new ObservableCollection<ConfigLabel>
-            {
-                new ConfigLabel(){ ConfigType=DataFile.City, Icon="People", Label="Cities"},
-                new ConfigLabel(){ ConfigType=DataFile.Race, Icon="Contact2", Label="Cultures"},
-                new ConfigLabel(){ ConfigType=DataFile.Dungeon, Icon="Map", Label="Dungeons"},
-                new ConfigLabel(){ ConfigType=DataFile.ItemRank, Icon="Emoji", Label="Items"},
-                new ConfigLabel(){ ConfigType=DataFile.NpcName, Icon="AddFriend", Label="Names"},
-                new ConfigLabel(){ ConfigType=DataFile.Nation, Icon="World", Label="Nations"},
-                new ConfigLabel(){ ConfigType=DataFile.Personality, Icon="Emoji2", Label="Personalities"},
-                new ConfigLabel(){ ConfigType=DataFile.Profession, Icon="Account", Label="Professions"},
-                new ConfigLabel(){ ConfigType=DataFile.Region, Icon="World", Label="Regions"},
-                //new ConfigLabel(){ ConfigType=DataFile.Rumor, Icon="PostUpdate", Label="Rumors"},
-                new ConfigLabel(){ ConfigType=DataFile.SettlementType, Icon="Street", Label="Town Types"},
-                new ConfigLabel(){ ConfigType=DataFile.SettlementRole, Icon="Filter", Label="Town Roles"}
-            };
+            vms.Add(new ConfigItemViewModel(s, DataFile.City));
+            vms.Add(new ConfigItemViewModel(s, DataFile.Dungeon));
+            vms.Add(new ConfigItemViewModel(s, DataFile.ItemRank));
+            vms.Add(new ConfigItemViewModel(s, DataFile.Nation));
+            vms.Add(new ConfigItemViewModel(s, DataFile.NpcName));
+            vms.Add(new ConfigItemViewModel(s, DataFile.Personality));
+            vms.Add(new ConfigItemViewModel(s, DataFile.Profession));
+            vms.Add(new ConfigItemViewModel(s, DataFile.Race));
+            vms.Add(new ConfigItemViewModel(s, DataFile.Region));
+            vms.Add(new ConfigItemViewModel(s, DataFile.SettlementRole));
+            vms.Add(new ConfigItemViewModel(s, DataFile.SettlementType));
+            OnPropertyChanged(nameof(Models));
+            name = "Configuration Editor";
         }
 
-        public IConfigDisplay DisplayItem
-        {
-            get => displayItem;
-            set => SetProperty(ref displayItem, value);
-        }
-
-        public string DisplayText { get => displayText; set => SetProperty(ref displayText, value); }
-
-        public ObservableCollection<ConfigLabel> Labels { get; private set; }
-        public bool RichContentViewVisible => DisplayItem != null;
-        public bool TextContentViewVisible => !RichContentViewVisible;
-
-        private void DidSelectItem(string label)
-        {
-        }
-
-        private void DidSaveItem()
-        {   
-        }
+        public ObservableCollection<ConfigItemViewModel> Models { get => vms; }
+        public ConfigItemViewModel SelectedVM { get => vm; set => SetProperty(ref vm, value); }
     }
 
     public class ConfigLabel : NotifyChangedBase
