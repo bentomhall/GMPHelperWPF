@@ -5,8 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DMPHelperWPF.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="800" d:DesignWidth="1000">
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
         <DataTemplate x:Key="PersonTemplate">
             <Grid Margin="12,20,20,12" Width="Auto">
                 <Grid.ColumnDefinitions>
@@ -38,7 +39,7 @@
         </DataTemplate>
     </UserControl.Resources>
 
-    <Grid >
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -48,21 +49,30 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0" Margin="12" Grid.ColumnSpan="2">
-            <ComboBox ItemsSource="{Binding ViewModel.Cities, Mode=OneWay}" Margin="12,0,0,0" SelectedItem="{Binding ViewModel.SelectedCity, Mode=TwoWay}"/>
-            <ComboBox ItemsSource="{Binding ViewModel.Sizes, Mode=OneWay}"  Margin="12,0,0,0" SelectedItem="{Binding ViewModel.SelectedSize, Mode=TwoWay}"/>
-            <TextBox Text="{Binding ViewModel.Number, Mode=TwoWay}" Margin="12,0,0,0"/>
-            <Button Content="Go!" Command="{Binding ViewModel.GenerateCommand}" Width="128" Margin="24,0,0,0" VerticalAlignment="Stretch"/>
+            <StackPanel>
+                <TextBlock Text="Nearest City" Margin="0,0,0,4"/>
+                <ComboBox ItemsSource="{Binding Cities, Mode=OneWay}" SelectedItem="{Binding SelectedCity, Mode=TwoWay}" MinWidth="100"/>    
+            </StackPanel>
+            <StackPanel Margin="12,0,0,0">
+                <TextBlock Text="Town Size" Margin="0,0,0,4"/>
+                <ComboBox ItemsSource="{Binding Sizes, Mode=OneWay}" SelectedItem="{Binding SelectedSize, Mode=TwoWay}" MinWidth="100"/>
+            </StackPanel>
+            <StackPanel Margin="12,0,0,0">
+                <TextBlock Text="Number" Margin="0,0,0,4"/>
+                <TextBox Text="{Binding Number, Mode=TwoWay}" MinWidth="64"/>
+            </StackPanel>
+            <Button Content="Go!" Command="{Binding GenerateCommand}" Width="48" Margin="24,0,0,0" VerticalAlignment="Stretch"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Canvas.ZIndex="1" Background="#99FFFFFF" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button Content="Export Selected" Command="{Binding ViewModel.ExportCommand}" />
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Canvas.ZIndex="1" Background="#99FFFFFF" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+            <Button Content="Export Selected" Command="{Binding ExportCommand}" />
             <Button Content="Select All" Click="AppBarButton_Click" />
         </StackPanel>
         <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" 
-                VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="{Binding ViewModel.DisplayError, Mode=OneWay}"
+                VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="{Binding DisplayError, Mode=OneWay, Converter={StaticResource BoolToVis}}"
                 Canvas.ZIndex="2" Background="White" MinHeight="200" MinWidth="200">
-            <TextBlock Text="{Binding ViewModel.ErrorText, Mode=OneWay}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding ErrorText, Mode=OneWay}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         </Border>
-        <ListView x:Name="DataList" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding ViewModel.SettlementModels, Mode=OneWay}" 
+        <ListView x:Name="DataList" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding SettlementModels, Mode=OneWay}" 
                   SelectionChanged="ListView_SelectionChanged" SelectionMode="Multiple"
                   Background="{StaticResource ItemPanelBackgroundBrush}">
             <ListView.ItemTemplate>

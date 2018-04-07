@@ -1,12 +1,15 @@
-﻿<Page
-    x:Class="DMPrepHelper.Views.NpcPage"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:vm="using:DMPrepHelper.ViewModels"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d">
-    <Grid>
+﻿<UserControl x:Class="DMPHelperWPF.Views.NpcControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DMPHelperWPF.ViewModels"
+             mc:Ignorable="d" 
+             d:DesignHeight="800" d:DesignWidth="1000">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
+    </UserControl.Resources>
+    <Grid Background="White">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -16,20 +19,27 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Orientation="Horizontal" Margin="12" Grid.ColumnSpan="2">
-            <ComboBox ItemsSource="{Binding ViewModel.Nations, Mode=OneWay}" SelectedItem="{Binding ViewModel.SelectedNation, Mode=TwoWay}" MinWidth="150"/>
-            <TextBox  Text="{Binding ViewModel.Number, Mode=TwoWay}" Margin="12,0,0,0" MinWidth="100"/>
-            <Button Name="CreateButton" Command="{Binding ViewModel.GenerateCommand}" Content="Go!" IsEnabled="{Binding ViewModel.CanGenerate, Mode=OneWay}" Margin="12,0,0,0" VerticalAlignment="Bottom"/>
+            <StackPanel>
+                <TextBlock Text="Nation" Margin="0,0,0,4"/>
+                <ComboBox ItemsSource="{Binding Nations, Mode=OneWay}" SelectedItem="{Binding SelectedNation, Mode=TwoWay}" MinWidth="150"/>    
+            </StackPanel>
+            <StackPanel Margin="12,0,0,0">
+                <TextBlock Text="Number" Margin="0,0,0,4"/>
+                <TextBox  Text="{Binding Number, Mode=TwoWay}"  MinWidth="100"/>    
+            </StackPanel>
+            
+            <Button Name="CreateButton" Command="{Binding GenerateCommand}" Content="Go!" IsEnabled="{Binding CanGenerate, Mode=OneWay}" Margin="12,0,0,0" MinWidth="48" VerticalAlignment="Stretch"/>
         </StackPanel>
-        <StackPanel Orientation="Horizontal" Grid.Row="1" Canvas.ZIndex="1" Background="#99FFFFFF" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Top">
-            <Button Content="Export Selected" Command="{Binding ViewModel.ExportCommand}" />
-            <Button Content="Select All" Click="AppBarButton_Click" />
+        <StackPanel Orientation="Horizontal" Grid.Row="0" Canvas.ZIndex="1" Background="#99FFFFFF" Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="12">
+            <Button Content="Export Selected" Command="{Binding ExportCommand}" />
+            <Button Content="Select All" Click="AppBarButton_Click" Margin="12,0,0,0" />
         </StackPanel>
         <Border Grid.Column="0" Grid.ColumnSpan="2" Grid.RowSpan="2" BorderBrush="Black" BorderThickness="1" 
-                VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="{Binding ViewModel.DisplayError, Mode=OneWay}"
+                VerticalAlignment="Top" HorizontalAlignment="Center" Visibility="{Binding DisplayError, Mode=OneWay, Converter={StaticResource BoolToVis}}"
                 Canvas.ZIndex="2" Background="White" MinHeight="200" MinWidth="200">
-            <TextBlock Text="{Binding ViewModel.ErrorText, Mode=OneWay}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
+            <TextBlock Text="{Binding ErrorText, Mode=OneWay}" TextWrapping="Wrap" HorizontalAlignment="Stretch" VerticalAlignment="Center"/>
         </Border>
-        <ListView x:Name="DataGrid" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding ViewModel.ViewModels, Mode=OneWay}"  SelectionMode="Multiple" SelectionChanged="GridView_SelectionChanged"
+        <ListView x:Name="DataGrid" Grid.Row="1" Grid.ColumnSpan="2" ItemsSource="{Binding ViewModels, Mode=OneWay}"  SelectionMode="Multiple" SelectionChanged="GridView_SelectionChanged"
                   Background="{StaticResource ItemPanelBackgroundBrush}">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -57,7 +67,7 @@
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
-            
+
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="MinWidth" Value="480"/>
@@ -66,4 +76,4 @@
             </ListView.ItemContainerStyle>
         </ListView>
     </Grid>
-</Page>
+</UserControl>

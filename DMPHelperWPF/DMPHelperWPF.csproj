@@ -69,6 +69,12 @@
     <Compile Include="ViewModels\SettlementGeneratorViewModel.cs" />
     <Compile Include="ViewModels\SettlementViewModel.cs" />
     <Compile Include="ViewModels\SimpleListDataModel.cs" />
+    <Compile Include="Views\DungeonControl.xaml.cs">
+      <DependentUpon>DungeonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NpcControl.xaml.cs">
+      <DependentUpon>NpcControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\WelcomeControl.xaml.cs">
       <DependentUpon>WelcomeControl.xaml</DependentUpon>
     </Compile>
@@ -78,20 +84,11 @@
     <None Include="Views\ConfigItemPage.bak.xaml.cs">
       <DependentUpon>ConfigItemPage.bak.xaml</DependentUpon>
     </None>
-    <None Include="Views\DungeonPage.bak.xaml.cs">
-      <DependentUpon>DungeonPage.bak.xaml</DependentUpon>
-    </None>
-    <None Include="Views\NpcPage.bak.xaml.cs">
-      <DependentUpon>NpcPage.bak.xaml</DependentUpon>
-    </None>
     <Compile Include="ViewModels\WelcomeViewModel.cs" />
     <Compile Include="ViewModels\WindowViewModel.cs" />
     <Compile Include="Views\SettlementControl.xaml.cs">
       <DependentUpon>SettlementControl.xaml</DependentUpon>
     </Compile>
-    <None Include="Views\SettlementPage.bak.xaml.cs">
-      <DependentUpon>SettlementPage.bak.xaml</DependentUpon>
-    </None>
     <None Include="Views\WelcomePage.bak.xaml.cs">
       <DependentUpon>WelcomePage.bak.xaml</DependentUpon>
     </None>
@@ -115,22 +112,18 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </None>
-    <None Include="Views\DungeonPage.bak.xaml">
-      <Generator>MSBuild:Compile</Generator>
+    <Page Include="Views\DungeonControl.xaml">
       <SubType>Designer</SubType>
-    </None>
-    <None Include="Views\NpcPage.bak.xaml">
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NpcControl.xaml">
       <SubType>Designer</SubType>
-    </None>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SettlementControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <None Include="Views\SettlementPage.bak.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </None>
     <None Include="Views\WelcomePage.bak.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

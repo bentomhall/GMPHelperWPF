@@ -16,9 +16,9 @@ namespace DMPHelperWPF.ViewModels
 
         public WindowViewModel(StorageHelper s)
         {
-            //viewModels.Add(new NPCGeneratorViewModel(s));
+            viewModels.Add(new NPCGeneratorViewModel(s));
             viewModels.Add(new SettlementGeneratorViewModel(s));
-            //viewModels.Add(new DungeonGeneratorViewModel(s));
+            viewModels.Add(new DungeonGeneratorViewModel(s));
             selected = viewModels[0];
         }
 

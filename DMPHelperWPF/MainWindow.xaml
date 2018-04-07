@@ -6,13 +6,19 @@
         xmlns:local="clr-namespace:DMPHelperWPF.ViewModels"
         xmlns:views="clr-namespace:DMPHelperWPF.Views"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="800" Width="1000">
     <Window.Resources>
         <DataTemplate DataType="{x:Type local:SettlementGeneratorViewModel}">
             <views:SettlementControl/>
         </DataTemplate>
         <DataTemplate DataType="{x:Type local:WelcomeViewModel}">
             <views:WelcomeControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:NPCGeneratorViewModel}">
+            <views:NpcControl/>
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type local:DungeonGeneratorViewModel}">
+            <views:DungeonControl/>
         </DataTemplate>
     </Window.Resources>
     <DockPanel>

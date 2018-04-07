@@ -1,43 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using Windows.Foundation;
-using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Controls.Primitives;
-using Windows.UI.Xaml.Data;
-using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media;
-using Windows.UI.Xaml.Navigation;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
 using DMPHelperWPF.ViewModels;
-using LibGenerator.Dungeon;
-
-// The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace DMPHelperWPF.Views
 {
     /// <summary>
-    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// Interaction logic for DungeonControl.xaml
     /// </summary>
-    public sealed partial class DungeonPage : Page
+    public partial class DungeonControl : UserControl
     {
-        public DungeonPage()
+        public DungeonControl()
         {
-            this.InitializeComponent();
-
-        }
-
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
+            InitializeComponent();
             var storage = ((App)Application.Current).Storage;
-            if (vm == null || storage.ShouldReload("dungeon"))
-            {
-                vm = new DungeonGeneratorViewModel(storage);
-            }
-            base.OnNavigatedTo(e);
+            vm = new DungeonGeneratorViewModel(storage);
         }
 
         private DungeonGeneratorViewModel vm;
