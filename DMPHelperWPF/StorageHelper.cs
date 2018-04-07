@@ -6,12 +6,17 @@ using LibGenerator.NPC;
 using LibGenerator.Settlement;
 using Newtonsoft.Json;
 using System.IO;
+using System.IO.Compression;
 
 namespace DMPHelperWPF
 {
     public class StorageHelper
     {
         private string localPath;
+        private SettlementGenerator sGenerator;
+        private NPCGenerator nPCGenerator;
+        private DungeonGenerator dGenerator;
+        private Dictionary<string, bool> isDataDirty = new Dictionary<string, bool> { { "npc", false }, { "dungeon", false }, { "settlement", false } };
 
         public StorageHelper()
         {
@@ -28,30 +33,10 @@ namespace DMPHelperWPF
             return isDataDirty[page];
         }
 
-        string GetConfigData(DataFile fileType)
-        {
-            string data;
-            var filename = dataFiles[fileType];
-            var localFile = Path.Combine(localPath, filename);
-            try
-            {
-                data = File.ReadAllText(localFile);
-            } catch (IOException)
-            {
-                var uri = new Uri(Path.Combine("/Data", filename), UriKind.Relative);
-                var info = System.Windows.Application.GetContentStream(uri);
-                using (StreamReader r = new StreamReader(info.Stream, System.Text.Encoding.UTF8))
-                {
-                    data = r.ReadToEnd();
-                }
-                File.WriteAllText(localFile, data);
-            }
-            return data;
-        }
-
         public NPCGenerator GetNPCGenerator()
         {
-            if (nPCGenerator == null || isDataDirty["npc"]) {
+            if (nPCGenerator == null || isDataDirty["npc"])
+            {
                 var culture = Deserialize<CultureData>(DataFile.Race);
                 var names = Deserialize<NameData>(DataFile.NpcName);
                 var personalities = Deserialize<string>(DataFile.Personality);
@@ -117,6 +102,83 @@ namespace DMPHelperWPF
             SaveConfigText(type, text);
         }
 
+        public List<T> Deserialize<T>(DataFile type)
+        {
+            var data = dataText[type];
+            return JsonConvert.DeserializeObject<List<T>>(data);
+        }
+
+        public void WriteFile<T>(Export.ExportTypes export, IEnumerable<T> data)
+        {
+            var file = ChooseFileLocation(export);
+            if (file == null)
+            {
+                return;
+            }
+            var writer = new Export.ExportWriter(file);
+            switch (export)
+            {
+                case Export.ExportTypes.Dungeon:
+                    WriteDungeon(writer, data as IEnumerable<AdventureData>);
+                    break;
+                case Export.ExportTypes.Person:
+                    WriteNPC(writer, data as IEnumerable<PersonData>);
+                    break;
+                case Export.ExportTypes.Settlement:
+                    WriteSettlement(writer, data as IEnumerable<Settlement>);
+                    break;
+            }
+            return;
+
+        }
+
+        public bool LoadDataPackage()
+        {
+
+            var file = ChooseThemePackage();
+            if (file == null) { return false; }
+            using (FileStream fs = new FileStream(file, FileMode.Open))
+            {
+                using (ZipArchive archive = new ZipArchive(fs))
+                {
+                    var validFiles = new List<string> {"cityData.json", "dungeonData.json", "itemRanks.json", "nations.json", "nations.json", "npcNames.json", "personality.json", "professions.json", "races.json", "regionData.json", "rumors.json", "settlementRoles.json", "settlementTypes.json" };
+                    foreach (var item in archive.Entries)
+                    {
+                        if (validFiles.Contains(item.Name))
+                        {
+                            var path = Path.Combine(localPath, item.Name);
+                            item.ExtractToFile(path);
+                        }
+                    }
+                }
+            }
+            MarkDirty(DataFile.Nation); //mark both settlements and npcs dirty
+            MarkDirty(DataFile.Region); //mark dungeons dirty
+            return true;
+        }
+
+        private string GetConfigData(DataFile fileType)
+        {
+            string data;
+            var filename = dataFiles[fileType];
+            var localFile = Path.Combine(localPath, filename);
+            try
+            {
+                data = File.ReadAllText(localFile);
+            }
+            catch (IOException)
+            {
+                var uri = new Uri(Path.Combine("/Data", filename), UriKind.Relative);
+                var info = System.Windows.Application.GetContentStream(uri);
+                using (StreamReader r = new StreamReader(info.Stream, System.Text.Encoding.UTF8))
+                {
+                    data = r.ReadToEnd();
+                }
+                File.WriteAllText(localFile, data);
+            }
+            return data;
+        }
+
         private void MarkDirty(DataFile type)
         {
             switch (type)
@@ -141,24 +203,6 @@ namespace DMPHelperWPF
                     break;
             }
             return;
-        }
-
-        private SettlementGenerator sGenerator;
-        private NPCGenerator nPCGenerator;
-        private DungeonGenerator dGenerator;
-        private Dictionary<string, bool> isDataDirty = new Dictionary<string, bool> { {"npc", false }, {"dungeon", false }, {"settlement", false } };
-
-        /*
-        public async Task<List<T>> DeserializeAsync<T>(DataFile type)
-        {
-            var data = dataText[type];
-            return await data.ContinueWith(x => JsonConvert.DeserializeObject<List<T>>(x.Result));
-        }*/
-
-        public List<T> Deserialize<T>(DataFile type)
-        {
-            var data = dataText[type];
-            return JsonConvert.DeserializeObject<List<T>>(data);
         }
 
         private string ChooseThemePackage()
@@ -216,30 +260,6 @@ namespace DMPHelperWPF
             {
                 return null;
             }
-
-        }
-
-        public void WriteFile<T>(Export.ExportTypes export, IEnumerable<T> data)
-        {
-            var file = ChooseFileLocation(export);
-            if (file == null)
-            {
-                return;
-            }
-            var writer = new Export.ExportWriter(file);
-            switch (export)
-            {
-                case Export.ExportTypes.Dungeon:
-                    WriteDungeon(writer, data as IEnumerable<AdventureData>);
-                    break;
-                case Export.ExportTypes.Person:
-                    WriteNPC(writer, data as IEnumerable<PersonData>);
-                    break;
-                case Export.ExportTypes.Settlement:
-                    WriteSettlement(writer, data as IEnumerable<Settlement>);
-                    break;
-            }
-            return;
 
         }
 

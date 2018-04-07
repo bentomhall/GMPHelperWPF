@@ -36,6 +36,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -78,6 +79,16 @@
     <Compile Include="Views\WelcomeControl.xaml.cs">
       <DependentUpon>WelcomeControl.xaml</DependentUpon>
     </Compile>
+    <None Include="HelpText\CityDataHelpText.rtf" />
+    <None Include="HelpText\CultureDataHelpText.rtf" />
+    <None Include="HelpText\DungeonDataHelpText.rtf" />
+    <None Include="HelpText\ItemRanksHelpText.rtf" />
+    <None Include="HelpText\NameHelpText.rtf" />
+    <None Include="HelpText\NationDataHelpText.rtf" />
+    <None Include="HelpText\PersonalityAndProfession.rtf" />
+    <None Include="HelpText\RegionDataHelpText.rtf" />
+    <None Include="HelpText\SettlementRoleHelpText.rtf" />
+    <None Include="HelpText\SettlementTypesHelpText.rtf" />
     <None Include="Views\ConfigEditorPage.bak.xaml.cs">
       <DependentUpon>ConfigEditorPage.bak.xaml</DependentUpon>
     </None>
@@ -218,9 +229,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpText\SettlementRoleHelpText.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="HelpText\SettlementTypesHelpText.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="HelpText\WelcomeText.html" />

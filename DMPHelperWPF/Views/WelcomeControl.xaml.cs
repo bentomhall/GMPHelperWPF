@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace DMPHelperWPF.Views
 {
@@ -23,6 +24,21 @@ namespace DMPHelperWPF.Views
         public WelcomeControl()
         {
             InitializeComponent();
+            this.Loaded += OnLoad;
+        }
+
+        private void OnLoad(object sender, RoutedEventArgs args)
+        {
+            
+            var text = File.ReadAllBytes("pack://application,,,/HelpText/WelcomeText.rtf");
+            TextViewer.SelectAll();
+            using (MemoryStream s = new MemoryStream(text))
+            {
+                s.Position = 0;
+                TextViewer.Selection.Load(s, DataFormats.Rtf);
+            }
+                
+            //throw new NotImplementedException();
         }
     }
 }
