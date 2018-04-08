@@ -89,7 +89,7 @@ namespace DMPHelperWPF.ViewModels
             {DataFile.Race, "CultureDataHelpText.html" },
             {DataFile.Region, "RegionDataHelpText.html" },
             //{DataFile.Rumor, "RumorDataHelpText"},
-            {DataFile.SettlementRole, "SettlementRoleDataHelpText.html" },
+            {DataFile.SettlementRole, "SettlementRoleHelpText.html" },
             {DataFile.SettlementType, "SettlementTypesHelpText.html" }
         };
 
