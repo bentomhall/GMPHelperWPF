@@ -87,9 +87,24 @@ namespace DMPHelperWPF.ViewModels
             }
             ViewModels = viewModels;
             OnPropertyChanged(nameof(ViewModels));
+
+            if (DisplayError)
+            {
+                ClearFlag();
+            }
         }
 
-        public void DidSelectAll()
+        private void ClearFlag()
+{
+    System.Threading.Timer timer = null;
+    timer = new System.Threading.Timer((obj) =>
+    {
+        DisplayError = false;
+    },
+    null, 2000, System.Threading.Timeout.Infinite);
+}
+
+public void DidSelectAll()
         {
             SelectedModels = ViewModels;
         }

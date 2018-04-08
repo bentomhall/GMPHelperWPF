@@ -108,7 +108,22 @@ namespace DMPHelperWPF.ViewModels
                 }
                 
             }
+
+            if (DisplayError)
+            {
+                ClearFlag();
+            }
             
+        }
+
+        private void ClearFlag()
+        {
+            System.Threading.Timer timer = null;
+            timer = new System.Threading.Timer((obj) =>
+            {
+                DisplayError = false;
+            },
+            null, 2000, System.Threading.Timeout.Infinite);
         }
 
         public ICommand ExportCommand

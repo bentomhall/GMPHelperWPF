@@ -22,9 +22,16 @@
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Content="Save" Command="{Binding SelectedVM.SaveConfigCommand}" Grid.Column="1" Margin="12"/>
+        <Button Content="Save" Command="{Binding SelectedVM.SaveConfigCommand}" Grid.Column="1" Margin="12" />
+
+        
         <Border BorderBrush="Black" BorderThickness="0,0,0,2" Grid.ColumnSpan="2"/>
-        <TextBox Text="{Binding SelectedVM.ConfigText, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Margin="12"/>
+        <DockPanel Grid.Column="0" Grid.Row="1" Margin="12" LastChildFill="True">
+            
+            <Button Content="Add Element" Command="{Binding SelectedVM.AddItemCommand}" DockPanel.Dock="Bottom" Height="24"/>
+            <TextBox Text="{Binding SelectedVM.ConfigText, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" AcceptsReturn="True" AcceptsTab="True"/>
+        </DockPanel>
+        
         <WebBrowser x:Name="HelpTextViewer" Grid.Column="1" Grid.Row="1" Margin="12"/>
 
 

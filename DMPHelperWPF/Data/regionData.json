@@ -18,8 +18,7 @@
           "underground",
           "ruin",
           "graveyard",
-          "camp",
-          "cult"
+          "camp"
         ]
     },
     {
@@ -41,8 +40,7 @@
         "underground",
         "ruin",
         "graveyard",
-        "camp",
-        "cult"
+        "camp"
       ]
     }
 ]

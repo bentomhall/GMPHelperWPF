@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows;
 
 namespace DMPHelperWPF.ViewModels
 {
@@ -13,17 +14,20 @@ namespace DMPHelperWPF.ViewModels
         private RelayCommand<object> loadPackageCommand;
         private bool status = false;
 
+        /*
         public WelcomeViewModel()
         {
             name = "Welcome";
-        }
+        }*/
 
         public bool LoadStatus { get => status; set => SetProperty(ref status, value); }
         public string LoadSuccess { get => "File Loaded Successfully"; }
 
+        
         public WelcomeViewModel(StorageHelper s)
         {
             storage = s;
+            name = "Welcome";
         }
 
         public ICommand LoadPackageCommand

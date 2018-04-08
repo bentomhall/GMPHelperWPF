@@ -150,7 +150,7 @@ namespace DMPHelperWPF
                     if (validFiles.Contains(item.Name))
                     {
                             var path = Path.Combine(localPath, item.Name);
-                            item.ExtractToFile(path);
+                            item.ExtractToFile(path, true);
                     }
                 }
             }

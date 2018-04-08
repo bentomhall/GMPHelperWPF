@@ -10,12 +10,13 @@ namespace DMPHelperWPF.ViewModels
 {
     public class WindowViewModel : NotifyChangedBase
     {
-        private ObservableCollection<NotifyChangedBase> viewModels = new ObservableCollection<NotifyChangedBase> { new WelcomeViewModel() };
+        private ObservableCollection<NotifyChangedBase> viewModels = new ObservableCollection<NotifyChangedBase> { };
         private NotifyChangedBase selected;
         private RelayCommand<string> changePageCommand;
 
         public WindowViewModel(StorageHelper s)
         {
+            viewModels.Add(new WelcomeViewModel(s));
             viewModels.Add(new NPCGeneratorViewModel(s));
             viewModels.Add(new SettlementGeneratorViewModel(s));
             viewModels.Add(new DungeonGeneratorViewModel(s));
