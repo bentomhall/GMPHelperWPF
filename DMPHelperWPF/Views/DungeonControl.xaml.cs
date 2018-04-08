@@ -26,6 +26,7 @@ namespace DMPHelperWPF.Views
             InitializeComponent();
             var storage = ((App)Application.Current).Storage;
             vm = new DungeonGeneratorViewModel(storage);
+            DataContext = vm;
         }
 
         private DungeonGeneratorViewModel vm;

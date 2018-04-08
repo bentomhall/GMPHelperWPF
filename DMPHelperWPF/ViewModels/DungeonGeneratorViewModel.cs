@@ -19,7 +19,7 @@ namespace DMPHelperWPF.ViewModels
         private bool CanExecute = true;
         private RelayCommand<object> generateCommand;
         private ObservableCollection<DungeonViewModel> vms = new ObservableCollection<DungeonViewModel>();
-        private ObservableCollection<DungeonViewModel> selectedVMs;
+        private ObservableCollection<DungeonViewModel> selectedVMs = new ObservableCollection<DungeonViewModel>();
         private StorageHelper storage;
 
         public DungeonGeneratorViewModel(StorageHelper s)
@@ -119,7 +119,8 @@ namespace DMPHelperWPF.ViewModels
 
         private void ExportSelected()
         {
-            storage.WriteFile(Export.ExportTypes.Dungeon, selectedVMs.Select(x => x.RawData));
+            var values = selectedVMs.Select(x => x.RawData);
+            storage.WriteFile(Export.ExportTypes.Dungeon, values);
         }
 
     }
