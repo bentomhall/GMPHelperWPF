@@ -74,13 +74,14 @@ namespace DMPHelperWPF.ViewModels
 
         private void CreateVM()
         {
+            ViewModels.Clear();
             for (int i=0; i < number; i++)
             {
                 DungeonViewModel vm;
                 try
                 {
                     vm = new DungeonViewModel(generator.GenerateAdventure(SelectedRegion));
-                    vms.Add(vm);
+                    ViewModels.Add(vm);
                     DisplayError = false;
                 } catch (Exception)
                 {
@@ -91,7 +92,6 @@ namespace DMPHelperWPF.ViewModels
                 
                 
             }
-            OnPropertyChanged(nameof(ViewModels));
             if (DisplayError)
             {
                 ClearFlag();
