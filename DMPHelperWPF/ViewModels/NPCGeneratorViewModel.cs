@@ -69,7 +69,7 @@ namespace DMPHelperWPF.ViewModels
 
         private void CreateNPCs()
         {
-            var viewModels = new ObservableCollection<PersonViewModel>(); 
+            var viewModels = new ObservableCollection<PersonViewModel>();
             for (int i = 0; i < number; i++)
             {
                 try
@@ -77,13 +77,14 @@ namespace DMPHelperWPF.ViewModels
                     var npc = generator.GenerateNPC(selected);
                     viewModels.Add(new PersonViewModel(npc));
                     DisplayError = false;
-                } catch (Exception)
+                }
+                catch (Exception)
                 {
                     ErrorText = "An error occurred. Check the following files for mismatched keys: Names, Cultures, and Nations.";
                     DisplayError = true;
                     return;
                 }
-                
+
             }
             ViewModels = viewModels;
             OnPropertyChanged(nameof(ViewModels));
@@ -95,16 +96,16 @@ namespace DMPHelperWPF.ViewModels
         }
 
         private void ClearFlag()
-{
-    System.Threading.Timer timer = null;
-    timer = new System.Threading.Timer((obj) =>
-    {
-        DisplayError = false;
-    },
-    null, 2000, System.Threading.Timeout.Infinite);
-}
+        {
+            System.Threading.Timer timer = null;
+            timer = new System.Threading.Timer((obj) =>
+            {
+                DisplayError = false;
+            },
+            null, 2000, System.Threading.Timeout.Infinite);
+        }
 
-public void DidSelectAll()
+        public void DidSelectAll()
         {
             SelectedModels = ViewModels;
         }
