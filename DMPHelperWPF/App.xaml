@@ -18,10 +18,5 @@
         <SolidColorBrush x:Key="ForegroundBrush" Color="#FF000000"/>
         <SolidColorBrush x:Key="ItemPanelBackgroundBrush" Color="#FF333333"/>
         <SolidColorBrush x:Key="ItemBackgroundBrush" Color="#FFFFFFFF"/>
-        <ResourceDictionary x:Key="helpDocs">
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Views/HelpDocuments.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
     </Application.Resources>
 </Application>

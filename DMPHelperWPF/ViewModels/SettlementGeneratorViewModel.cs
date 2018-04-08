@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Threading.Tasks;
 using System.Windows.Input;
 using LibGenerator.Settlement;
 
@@ -27,6 +26,8 @@ namespace DMPHelperWPF.ViewModels
             storageHelper = storage;
             generator = storage.GetSettlementGenerator();
             Sizes = new ObservableCollection<string>(generator.GetPossibleSettlementTypes());
+            Sizes.Insert(0, "Random");
+            SelectedSize = Sizes[0];
             Cities = new ObservableCollection<string>(generator.GetPossibleCities());
             name = "Settlement Generator";
         }
@@ -85,7 +86,18 @@ namespace DMPHelperWPF.ViewModels
             {
                 try
                 {
-                    var settlement = generator.GenerateSettlement(selected, selectedCity);
+                    string size;
+                    if (selected == "Random")
+                    {
+                        var r = new Random();
+                        var index = r.Next(1, sizes.Count);
+                        size = sizes[index];
+                    }
+                    else
+                    {
+                        size = selected;
+                    }
+                    var settlement = generator.GenerateSettlement(size, selectedCity);
                     SettlementModels.Add(new SettlementViewModel(settlement));
                     DisplayError = false;
                 } catch (Exception)
