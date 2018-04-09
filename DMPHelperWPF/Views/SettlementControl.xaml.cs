@@ -23,33 +23,34 @@ namespace DMPHelperWPF.Views
     {
         public SettlementControl()
         {
-            InitializeComponent();
+            InitializeComponent();/*
             var storage = ((App)Application.Current).Storage;
             vm = new SettlementGeneratorViewModel(storage);
-            DataContext = vm;
+            DataContext = vm;*/
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (ViewModel == null) { return; } // viewmodel gets changed out first as things change.
             var removed = e.RemovedItems;
             var selected = e.AddedItems;
             if (removed.Count != 0)
             {
                 foreach (var r in removed)
                 {
-                    vm.SelectedViewModels.Remove(r as SettlementViewModel);
+                    ViewModel.SelectedViewModels.Remove(r as SettlementViewModel);
                 }
             }
             if (selected.Count != 0)
             {
                 foreach (var a in selected)
                 {
-                    vm.SelectedViewModels.Add(a as SettlementViewModel);
+                    ViewModel.SelectedViewModels.Add(a as SettlementViewModel);
                 }
             }
         }
 
-        public SettlementGeneratorViewModel ViewModel { get => vm; }
+        public SettlementGeneratorViewModel ViewModel { get => DataContext as SettlementGeneratorViewModel; }
         private SettlementGeneratorViewModel vm;
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)

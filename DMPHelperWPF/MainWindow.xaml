@@ -38,6 +38,6 @@
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
         </Border>
-        <ContentControl Content="{Binding SelectedModel}"/>
+        <ContentControl x:Name="MainContentPane" Content="{Binding SelectedModel}"/>
     </DockPanel>
 </Window>

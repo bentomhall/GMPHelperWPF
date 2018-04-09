@@ -23,25 +23,27 @@ namespace DMPHelperWPF.Views
     {
         public NpcControl()
         {
-            InitializeComponent();
+            InitializeComponent();/*
             var storage = ((App)Application.Current).Storage;
             vm = new NPCGeneratorViewModel(storage);
-            DataContext = vm;
+            DataContext = vm;*/
         }
 
         private NPCGeneratorViewModel vm;
 
-        public NPCGeneratorViewModel ViewModel { get => vm; set => vm = value; }
+        public NPCGeneratorViewModel ViewModel { get => DataContext as NPCGeneratorViewModel; }
 
         private void GridView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (ViewModel == null) { return; } // viewmodel gets changed out first as things change.
             var addedItems = e.AddedItems;
             var removedItems = e.RemovedItems;
+            
             if (removedItems.Count != 0)
             {
                 foreach (var r in removedItems)
                 {
-                    vm.SelectedModels.Remove(r as PersonViewModel);
+                    ViewModel?.SelectedModels.Remove(r as PersonViewModel);
                 }
             }
             if (addedItems.Count != 0)
@@ -49,7 +51,7 @@ namespace DMPHelperWPF.Views
                 foreach (var a in addedItems)
                 {
                     var model = a as PersonViewModel;
-                    vm.SelectedModels.Add(model);
+                    ViewModel?.SelectedModels.Add(model);
                 }
             }
         }

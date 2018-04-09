@@ -24,30 +24,31 @@ namespace DMPHelperWPF.Views
         public DungeonControl()
         {
             InitializeComponent();
-            var storage = ((App)Application.Current).Storage;
-            vm = new DungeonGeneratorViewModel(storage);
-            DataContext = vm;
+           // var storage = ((App)Application.Current).Storage;
+            //vm = new DungeonGeneratorViewModel(storage);
+            //DataContext = vm;
         }
 
         private DungeonGeneratorViewModel vm;
-        public DungeonGeneratorViewModel ViewModel { get => vm; }
+        public DungeonGeneratorViewModel ViewModel { get => DataContext as DungeonGeneratorViewModel; }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (ViewModel == null) { return; } // viewmodel gets changed out first as things change.
             var removed = e.RemovedItems;
             var selected = e.AddedItems;
             if (removed.Count != 0)
             {
                 foreach (var r in removed)
                 {
-                    vm.SelectedViewModels.Remove(r as DungeonViewModel);
+                    ViewModel.SelectedViewModels.Remove(r as DungeonViewModel);
                 }
             }
             if (selected.Count != 0)
             {
                 foreach (var a in selected)
                 {
-                    vm.SelectedViewModels.Add(a as DungeonViewModel);
+                    ViewModel.SelectedViewModels.Add(a as DungeonViewModel);
                 }
             }
         }

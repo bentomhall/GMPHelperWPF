@@ -21,11 +21,24 @@ namespace DMPHelperWPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        private WindowViewModel vm;
+
         public MainWindow()
         {
             InitializeComponent();
             var storage = ((App)Application.Current).Storage;
-            DataContext = new WindowViewModel(storage);
+            vm = new WindowViewModel(storage);
+            //vm.PropertyChanged += Vm_PropertyChanged;
+            DataContext = vm;
+
+        }
+
+        private void Vm_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "SelectedModel")
+            {
+                MainContentPane.DataContext = vm.SelectedModel;
+            }
         }
     }
 }
