@@ -18,7 +18,7 @@
     }
   },
   {
-    "Name": "hamlet",
+    "Name": "Hamlet",
     "Population": 100,
     "NPCs": [ "tavern-keep", "priest", "smith" ],
     "TechCaps": {
@@ -35,7 +35,7 @@
     }
   },
   {
-    "Name": "thorpe",
+    "Name": "Thorpe",
     "Population": 500,
     "NPCs": [ "inn-keep", "priest", "smith", "headman", "hedge-mage" ],
     "TechCaps": {
