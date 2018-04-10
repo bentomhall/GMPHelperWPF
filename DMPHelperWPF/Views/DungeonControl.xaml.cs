@@ -24,12 +24,8 @@ namespace DMPHelperWPF.Views
         public DungeonControl()
         {
             InitializeComponent();
-           // var storage = ((App)Application.Current).Storage;
-            //vm = new DungeonGeneratorViewModel(storage);
-            //DataContext = vm;
         }
 
-        private DungeonGeneratorViewModel vm;
         public DungeonGeneratorViewModel ViewModel { get => DataContext as DungeonGeneratorViewModel; }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

@@ -23,13 +23,8 @@ namespace DMPHelperWPF.Views
     {
         public NpcControl()
         {
-            InitializeComponent();/*
-            var storage = ((App)Application.Current).Storage;
-            vm = new NPCGeneratorViewModel(storage);
-            DataContext = vm;*/
+            InitializeComponent();
         }
-
-        private NPCGeneratorViewModel vm;
 
         public NPCGeneratorViewModel ViewModel { get => DataContext as NPCGeneratorViewModel; }
 
@@ -59,7 +54,6 @@ namespace DMPHelperWPF.Views
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {
             DataGrid.SelectAll();
-            vm.DidSelectAll();
         }
     }
 }

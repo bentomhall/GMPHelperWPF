@@ -23,10 +23,7 @@ namespace DMPHelperWPF.Views
     {
         public SettlementControl()
         {
-            InitializeComponent();/*
-            var storage = ((App)Application.Current).Storage;
-            vm = new SettlementGeneratorViewModel(storage);
-            DataContext = vm;*/
+            InitializeComponent();
         }
 
         private void ListView_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -51,7 +48,6 @@ namespace DMPHelperWPF.Views
         }
 
         public SettlementGeneratorViewModel ViewModel { get => DataContext as SettlementGeneratorViewModel; }
-        private SettlementGeneratorViewModel vm;
 
         private void AppBarButton_Click(object sender, RoutedEventArgs e)
         {

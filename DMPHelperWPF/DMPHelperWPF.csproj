@@ -75,6 +75,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Xml">
       <Private>False</Private>
@@ -195,6 +196,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <None Include="Resources\MainIcon.ico" />
     <Resource Include="Assets\LargeTile.scale-100.png" />
     <Resource Include="Assets\LargeTile.scale-125.png" />
     <Resource Include="Assets\LargeTile.scale-150.png" />
