@@ -9,7 +9,6 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-        <ResourceDictionary x:Key="helpDocs" Source="HelpDocuments.xaml"/>
     </UserControl.Resources>
     <Grid Background="White">
         <Grid.ColumnDefinitions>
@@ -42,11 +41,11 @@
                 <Paragraph>All of the data for these generators is freely customizable within the program and (mostly) system independent. The only assumptions that it makes are the existence of tiers of play. The data files come with full documentation.</Paragraph>
                 <Paragraph>Generated items can be exported to structured plain text files for ease of inclusion with other campaign notes.</Paragraph>
                 <Paragraph FontSize="18">Legal and Version Notes</Paragraph>
-                <Paragraph>This is version 0.1 (beta). As a beta product, it still may have bugs. Please let me know about them at gmhelper@admiralbenbo.org</Paragraph>
+                <Paragraph>This is version 1.0.7 (beta). As a beta product, it still may have bugs. Please let me know about them at gmhelper@admiralbenbo.org</Paragraph>
                 <Paragraph>Suggestions for features, aesthetic changes, or fixes are also welcome. Expect the color schemes to shift around a bit in future versions.</Paragraph>
                 <Paragraph>The code for the app is licensed under the BSD 3-clause license, available at
                     <Hyperlink NavigateUri="https://opensource.org/licenses/BSD-3-Clause">https://opensource.org/licenses/BSD-3-Clause</Hyperlink> and is available at
-                    <Hyperlink NavigateUri="https://github.com/bentomhall/DMPrepHelper">https://github.com/bentomhall/DMPrepHelper</Hyperlink> .
+                    <Hyperlink NavigateUri="https://github.com/bentomhall/GMPHelperWPF">https://github.com/bentomhall/GMPHelperWPF</Hyperlink> .
                 </Paragraph>
             </FlowDocument>
         </FlowDocumentScrollViewer>
