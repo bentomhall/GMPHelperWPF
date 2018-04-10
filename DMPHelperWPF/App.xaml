@@ -57,5 +57,99 @@
                 
             </Grid>
         </DataTemplate>
+        <DataTemplate x:Key="AdventureSiteView">
+            <Grid  Margin="8,12,12,8" Background="{StaticResource ItemBackgroundBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="{Binding AdventureType}" Grid.Row="0" Margin="4,4,4,2"/>
+                <Border Grid.Row="0" BorderBrush="Black" BorderThickness="0,0,0,1"/>
+                <TextBlock Text="{Binding Size}" Grid.Row="1" Margin="4,2,2,4" TextWrapping="Wrap"/>
+                <Border Grid.Row="1" BorderBrush="Black" BorderThickness="0,0,0,1"/>
+                <TextBlock Text="{Binding PrimaryMonster}" Grid.Row="2" Margin="4,2,4,4" TextWrapping="Wrap"/>
+
+            </Grid>
+        </DataTemplate>
+        <DataTemplate x:Key="ItemModel">
+            <StackPanel>
+                <TextBlock Text="{Binding Category}" FontSize="14" FontWeight="Bold"/>
+                <ItemsControl ItemsSource="{Binding Items}" Margin="12,4,0,0" />
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:Key="SettlementView">
+            <Grid Margin="4,12,16,12" MaxHeight="800" Background="{StaticResource ItemBackgroundBrush}">
+                <Grid.RowDefinitions>
+                    <RowDefinition />
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Border Grid.Row="0" Grid.ColumnSpan="5" BorderThickness="0,0,0,2" BorderBrush="DarkGray"/>
+                <Border Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" BorderBrush="DarkGray" BorderThickness="0,0,2,0"/>
+                <Border Grid.Row="1" Grid.Column="3" BorderBrush="DarkGray" BorderThickness="2,0,0,0"/>
+                <TextBlock Text="{Binding Size}" Margin="4,4,2,2" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" TextAlignment="Left"/>
+                <TextBlock Text="{Binding Name}" Margin="2,4,2,2" Grid.Column="2" Grid.Row="0" FontWeight="Bold" FontSize="18" TextAlignment="Center"/>
+                <TextBlock Text="{Binding NearestCity}" Margin="2,4,4,2" Grid.Column="3" Grid.ColumnSpan="2" Grid.Row="0" TextAlignment="Right"/>
+                <Grid Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="1" Margin="4,0,4,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Key NPCs:" FontSize="14" FontWeight="Bold"/>
+                    <ListView Grid.Row="1"  ItemTemplate="{StaticResource PersonTemplate}" ItemsSource="{Binding ImportantPeople}">
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                                <Setter Property="IsHitTestVisible" Value="False"/>
+                            </Style>
+
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="0" Margin="4,0,4,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Items and Services" FontSize="14" FontWeight="Bold"/>
+                    <ListView Grid.Row="1" ItemsSource="{Binding Items}" ItemTemplate="{StaticResource ItemModel}" >
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <Setter Property="IsHitTestVisible" Value="False"/>
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
+                </Grid>
+                <Grid Grid.Row="1" Grid.ColumnSpan="2" Grid.Column="3" Margin="4,0,4,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="24"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Racial Demographics" FontSize="14" FontWeight="Bold"/>
+                    <ItemsControl Grid.Row="1"  ItemsSource="{Binding Demographics}"  >
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" MinWidth="128"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Text="{Binding Key}"/>
+                                    <TextBlock Grid.Column="1" Text="{Binding Value}" Margin="24,0,0,0" HorizontalAlignment="Stretch" TextAlignment="Right"/>
+                                </Grid>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </Grid>
+
+            </Grid>
+        </DataTemplate>
     </Application.Resources>
 </Application>

@@ -111,6 +111,7 @@
     <Compile Include="ViewModels\NPCGeneratorViewModel.cs" />
     <Compile Include="ViewModels\PersonViewModel.cs" />
     <Compile Include="ViewModels\RelayCommand.cs" />
+    <Compile Include="ViewModels\SavedItemsViewModel.cs" />
     <Compile Include="ViewModels\SettlementGeneratorViewModel.cs" />
     <Compile Include="ViewModels\SettlementViewModel.cs" />
     <Compile Include="ViewModels\SimpleListDataModel.cs" />
