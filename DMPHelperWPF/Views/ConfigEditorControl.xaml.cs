@@ -24,17 +24,31 @@ namespace DMPHelperWPF.Views
         public ConfigEditorControl()
         {
             InitializeComponent();
-            var storage = ((App)Application.Current).Storage;
-            vm = new ConfigEditorViewModel(storage);
-            DataContext = vm;
+            DataContextChanged += ConfigEditorControl_DataContextChanged;
+        }
+
+        private void ConfigEditorControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            vm = e.NewValue as ConfigEditorViewModel;
         }
 
         private ConfigEditorViewModel vm;
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (e.AddedItems.Count == 0) return;
             var text =@"file://"+(e.AddedItems[0] as ConfigItemViewModel).HelpText;
             HelpTextViewer.Navigate(text);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            ContentPanel.ScrollToEnd();
+        }
+
+        private void CommandBinding_Executed(object sender, ExecutedRoutedEventArgs e)
+        {
+            vm.SelectedVM.SaveConfigCommand.Execute(null);
         }
     }
 }

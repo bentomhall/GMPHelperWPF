@@ -14,6 +14,7 @@ namespace DMPHelperWPF.ViewModels
         private string helpText;
         private DataFile configType;
         private string localPath;
+        private string saveStatus = "No changes";
 
         public ConfigItemViewModel(StorageHelper s, DataFile type) : base(s)
         {
@@ -24,8 +25,18 @@ namespace DMPHelperWPF.ViewModels
             name = type.ToString();
         }
 
-        public string ConfigText { get => configText; set => SetProperty(ref configText, value); }
+        public string ConfigText
+        {
+            get => configText;
+            set
+            {
+                SetProperty(ref configText, value);
+                SaveStatus = "Save";
+            }
+                
+        }
         public string HelpText { get => helpText; set => SetProperty(ref helpText, value); }
+        public string SaveStatus { get => saveStatus; set => SetProperty(ref saveStatus, value); }
 
         private string GetData()
         {
@@ -35,6 +46,7 @@ namespace DMPHelperWPF.ViewModels
         protected override void DidSaveConfig()
         {
             storage.SaveConfigText(configType, configText);
+            SaveStatus = "No changes";
         }
 
         protected override void DidAddItem()

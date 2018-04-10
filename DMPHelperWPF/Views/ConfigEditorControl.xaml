@@ -6,6 +6,13 @@
              xmlns:local="clr-namespace:DMPHelperWPF.Views"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.CommandBindings>
+        <CommandBinding Command="ApplicationCommands.Save" Executed="CommandBinding_Executed"/>
+    </UserControl.CommandBindings>
+    <UserControl.InputBindings>
+        <KeyBinding Key="S" Modifiers="Ctrl" Command="ApplicationCommands.Save"/>
+    </UserControl.InputBindings>
+
     <Grid Background="White">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*"/>
@@ -18,18 +25,28 @@
         <ComboBox ItemsSource="{Binding Models}" SelectedItem="{Binding SelectedVM}" Margin="12" SelectionChanged="ComboBox_SelectionChanged">
             <ComboBox.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}"/>
+                    <TextBlock Text="{Binding Name}" Margin="2" TextAlignment="Center"/>
                 </DataTemplate>
             </ComboBox.ItemTemplate>
         </ComboBox>
-        <Button Content="Save" Command="{Binding SelectedVM.SaveConfigCommand}" Grid.Column="1" Margin="12" />
-
-        
+        <Button x:Name="SaveButton" Grid.Column="1" Margin="12" Content="{Binding SelectedVM.SaveStatus, Mode=OneWay}" Command="{Binding SelectedVM.SaveConfigCommand}" >
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding SelectedVM.SaveStatus}" Value="Save">
+                            <Setter Property="Background" Value="#B20000FF"/>
+                        </DataTrigger>
+                        <DataTrigger Binding="{Binding SelectedVM.SaveStatus}" Value="No changes">
+                            <Setter Property="Background" Value="LightGray"/>
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Border BorderBrush="Black" BorderThickness="0,0,0,2" Grid.ColumnSpan="2"/>
-        <DockPanel Grid.Column="0" Grid.Row="1" Margin="12" LastChildFill="True">
-            
-            <Button Content="Add Element" Command="{Binding SelectedVM.AddItemCommand}" DockPanel.Dock="Bottom" Height="24"/>
-            <TextBox Text="{Binding SelectedVM.ConfigText, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" AcceptsReturn="True" AcceptsTab="True"/>
+        <DockPanel Grid.Column="0" Grid.Row="1" Margin="12" LastChildFill="True" >
+            <Button Content="Add Element" Command="{Binding SelectedVM.AddItemCommand}" DockPanel.Dock="Bottom" Height="24" Click="Button_Click"/>
+            <TextBox x:Name="ContentPanel" Text="{Binding SelectedVM.ConfigText, UpdateSourceTrigger=PropertyChanged}" DockPanel.Dock="Top" AcceptsReturn="True" AcceptsTab="True"/>
         </DockPanel>
         
         <WebBrowser x:Name="HelpTextViewer" Grid.Column="1" Grid.Row="1" Margin="12"/>
